@@ -231,6 +231,7 @@ public class UserController {
 	@ApiOperation(value = "비밀번호 변경", notes = "비밀번호를 변경한다.") 
     @ApiResponses({
         @ApiResponse(code = 200, message = "성공"),
+        @ApiResponse(code = 401, message = "비밀번호 다름"),
         @ApiResponse(code = 404, message = "사용자 없음"),
         @ApiResponse(code = 500, message = "서버 오류")
     })

@@ -122,7 +122,7 @@ public class UserController {
 			}
 			return ResponseEntity.status(200).body(BaseResponseBody.of(200, "Success"));
 		}
-		return ResponseEntity.status(400).body(BaseResponseBody.of(4, "Not Exist Email"));
+		return ResponseEntity.status(403).body(BaseResponseBody.of(403, "Not Exist Email"));
 	}
 	
 	@GetMapping("/email/certification")

@@ -39,7 +39,6 @@ export default {
 
     const store = useStore()
     const router = useRouter()
-    const userEmail = store.getters.me.userEmail
 
     const changePassword = async function () {
       try {

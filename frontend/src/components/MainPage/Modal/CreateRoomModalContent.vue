@@ -1,11 +1,7 @@
 <template>
   <div class="user-input">
     <span>방 제목</span>
-    <input
-      type="text"
-      name="title"
-      v-model="roomInfo.title"
-    />
+    <input type="text" name="title" v-model="roomInfo.title" />
   </div>
   <div class="user-input">
     <span>방 설명</span>
@@ -42,17 +38,17 @@
 </template>
 
 <script>
-import { ref, reactive } from 'vue'
+import { ref, reactive } from "vue";
 // import { computed } from "vue"
-import { useStore } from "vuex"
-import api from '@/api/api'
-import axios from 'axios'
+import { useStore } from "vuex";
+import api from "@/api/api";
+import axios from "axios";
 
 export default {
   name: "CreateRoomModalContent",
-    setup(){
+  setup() {
     const store = useStore();
-    const token = store.state.users.token
+    const token = store.state.users.token;
     // 방 생성 정보
     let roomInfo = reactive({
       title: '',
@@ -87,14 +83,14 @@ export default {
           data: roomInfo
         })
         if (response.data.statusCode === 201) {
-          console.log('방 생성 성공')
-          roomCreateError.value = '방이 생성 되었습니다.'
+          console.log("방 생성 성공");
+          roomCreateError.value = "방이 생성 되었습니다.";
         }
       } catch (err) {
         roomCreateError.value = '방 생성에 실패하였습니다.'
         console.log("실패")
       }
-    }
+    };
 
     return {
       roomInfo,

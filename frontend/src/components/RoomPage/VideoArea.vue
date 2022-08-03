@@ -31,7 +31,7 @@ export default {
         for (let i = 1; i < customNumber.value; i++) {
             const id = i
             const nickname = String.fromCharCode(i + 64)
-            const onVideo = true
+            const onVideo = false
             userList.value.push({id, nickname, onVideo})
         }
 

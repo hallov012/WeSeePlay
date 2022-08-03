@@ -7,7 +7,6 @@
 
 <script>
 import VideoItem from './VideoItem.vue'
-// import { ref, watch } from 'vue'
 
 export default {
     components: { VideoItem },
@@ -17,17 +16,6 @@ export default {
             required: true
         }
     },
-
-    // setup(props) {
-    //     const numberOfUsers = ref(0)
-    //     watch(props.users, () => {
-    //         console.log(props.users)
-    //         numberOfUsers.value = props.users.length
-    //     })
-    //     return {
-    //         numberOfUsers
-    //     }
-    // }
 }
 </script>
 

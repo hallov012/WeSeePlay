@@ -1,12 +1,15 @@
 <template>
   <div>RoomPage</div>
-  <SideArea />
-  <BottomBar />
+  <VideoArea />
 </template>
 
-<script setup>
-import BottomBar from '@/components/RoomPage/BottomBar.vue'
-import SideArea from '@/components/RoomPage/SideArea.vue'
+<script>
+import VideoArea from '@/components/RoomPage/VideoArea.vue'
+export default {
+  components: {
+    VideoArea,
+  },
+}
 </script>
 
 <style></style>

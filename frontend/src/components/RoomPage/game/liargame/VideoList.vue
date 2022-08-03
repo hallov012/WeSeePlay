@@ -1,5 +1,4 @@
 <template>
-  <div>game-video List</div>
   <div class="row video-box">
     <!--flex로 넣고-->
     <div class="col-7 temp">Main Video</div>
@@ -12,9 +11,5 @@
 <style>
 .temp {
   border: solid 2px black;
-}
-
-.video-box {
-  height: 100%;
 }
 </style>

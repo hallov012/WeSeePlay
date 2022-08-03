@@ -1,5 +1,5 @@
 <template>
-  <div class="row justify-center" style="height: 100%">
+  <div class="row justify-center video-list-case">
     <VideoItem
       class="col"
       :class="users.length < 5 ? 'col-6' : 'col-4'"
@@ -24,4 +24,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.video-box {
+  height: 100%;
+}
+</style>

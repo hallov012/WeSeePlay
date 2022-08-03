@@ -1,6 +1,6 @@
 <template>
   <div>RoomPage</div>
-  <VideoArea style='width: 70%;'/>
+  <VideoArea />
 </template>
 
 <script>

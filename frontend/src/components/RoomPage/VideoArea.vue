@@ -1,7 +1,7 @@
 <template>
   <div class="video-area-case" :class="true ? 'non-side' : 'on-side'">
     <!-- isGameMode가 참이면 GameVideo가 나오게 하고, false라면 MeetingVideo가 나오게 짰어-->
-    <LiarGameVideo v-if="isGameMode" :users="userList" />
+    <LiarGameVideo v-if="isGameMode" :users="userList" :isSide="isSide" />
     <MeetingVideo v-else :users="userList" :isSide="isSide" />
   </div>
 </template>

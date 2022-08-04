@@ -3,8 +3,8 @@
     RoomPage <button @click="isSide = !isSide">Side On/Off</button>
   </div>
   <div class="row main-area">
-    <VideoArea :class="isSide ? 'col-8' : 'col-12'" :isSide="isSide" />
-    <SideArea class="temp" :class="isSide ? 'col-4' : ''" v-if="isSide" />
+    <VideoArea :class="isSide ? 'col-9' : 'col-12'" :isSide="isSide" />
+    <SideArea :class="isSide ? 'col-3' : ''" v-if="isSide" />
   </div>
   <BottomBar @room-edit="isEditModal = !isEditModal" />
   <EditModal v-if="isEditModal" @close="isEditModal = false">

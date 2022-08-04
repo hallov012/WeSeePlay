@@ -1,12 +1,8 @@
 <template>
   <div class="row full-height justify-center items-center">
-    <button
-      class="col-1"
-      @click.stop="getPageUser(currentPage - 1)"
-      :disabled="currentPage === 0"
-    >
-      이전
-    </button>
+    <a class="col-1" @click.stop="getPageUser(currentPage - 1)">
+      <img src="@/assets/leftArrow.png" />
+    </a>
     <div class="row col-10">
       <video-item
         v-for="user in pageUsers"
@@ -16,13 +12,9 @@
         class="self-center"
       />
     </div>
-    <button
-      class="col-1"
-      @click.stop="getPageUser(currentPage + 1)"
-      :disabled="currentPage === parseInt((users.length - 1) / pageLimit)"
-    >
-      다음
-    </button>
+    <a class="col-1" @click.stop="getPageUser(currentPage + 1)">
+      <img src="@/assets/rightArrow.png" />
+    </a>
   </div>
 </template>
 
@@ -48,10 +40,19 @@ const maxPages = ref(0)
 const pageLimit = ref(6)
 
 const getPageUser = function (page) {
-  pageUsers.value = props.users.slice(
-    page * pageLimit.value,
-    (page + 1) * pageLimit.value
-  )
+  if (page > maxPages.value || page < 0) {
+    return
+  } else if (page === maxPages.value) {
+    pageUsers.value = props.users.slice(
+      props.users.length - pageLimit.value,
+      props.users.length
+    )
+  } else {
+    pageUsers.value = props.users.slice(
+      page * pageLimit.value,
+      (page + 1) * pageLimit.value
+    )
+  }
   currentPage.value = page
 }
 
@@ -69,7 +70,7 @@ watchEffect(() => {
     pageLimit.value = 6
   }
   maxPages.value = parseInt((props.users.length - 1) / pageLimit.value)
-  getPageUser(currentPage.value)
+  getPageUser(0)
 })
 
 console.log("videoList", props.isSide)

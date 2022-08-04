@@ -39,7 +39,7 @@
           id="setttingInput"
           type="checkbox"
         />
-        <label class="btn" for="setttingInput">
+        <label @click="$emit('room-edit')" class="btn" for="setttingInput">
           <i class="fa-solid fa-gear fa-2x"></i>
         </label>
       </div>

@@ -5,11 +5,10 @@
     </button>
     <div class="row col justify-center video-list-case">
       <VideoItem
-        class="video"
+        class="video col-6"
         v-for="user in filteredUsers"
         :key="user.id"
         :user="user"
-        :class="filteredUsers.length < 5 ? 'col-5' : 'col-4'"
       />
     </div>
     <button

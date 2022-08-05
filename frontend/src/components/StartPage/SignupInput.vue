@@ -67,6 +67,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
 import { ref, reactive } from 'vue'
 import axios from 'axios'
 import ClauseText from './ClauseText.vue'
@@ -244,7 +245,13 @@ export default {
           },
         })
         if (response.status === 201) {
-          alert('회원가입이 완료되었습니다')
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: '회원가입이 완료되었습니다',
+            showConfirmButton: false,
+            timer: 1500,
+          })
           // 페이지 로그인 페이지로 전환
           context.emit('signup-done')
           return

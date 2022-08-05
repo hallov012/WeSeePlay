@@ -9,6 +9,7 @@ import java.util.NoSuchElementException;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -233,11 +234,11 @@ public class RoomController {
 		SsafyUserDetails userDetails = (SsafyUserDetails)authentication.getDetails();
 		String userEmail = userDetails.getUsername();
 		User user = userService.getUserByUserEmail(userEmail);
-		List<Room> totalRoom=roomService.findAll();
 		JsonObject jo=new JsonObject();
-		jo.addProperty("totalData",totalRoom.size());
-		List<Room> roomList=roomService.getRoomList(map);
+		Page<Room> totalRoomList=roomService.getRoomList(map);
+		List<Room> roomList=totalRoomList.getContent();
 		JsonArray jsonArray=new JsonArray();
+		jo.addProperty("totalData",totalRoomList.getTotalPages());
 		for (Room room : roomList) {
 			JsonObject temp=new JsonObject();
 			temp.addProperty("roomId", room.getId());

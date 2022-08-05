@@ -265,14 +265,49 @@ public class RoomController {
 			temp.add("joinUsers", userInfos);
 			jsonArray.add(temp);
 		}
-		
 		jo.add("content", jsonArray);
 		jo.addProperty("statusCode", 200);
 		jo.addProperty("message", "Success");
-		System.out.println(jo.toString());
-//		return ResponseEntity.status(200).body(BaseResponseBody.of(200, "Success"));
-		
 		return jo.toString();
-//		return ResponseEntity.status(200).body(RoomListGetRes.of(200, "Success",totalRoom.size(),jsonArray));
+	}
+	
+	@GetMapping("/info/{roomId}")
+	@ApiOperation(value = "단일 방 정보", notes = "단일 방 정보를 반환한다.") 
+    @ApiResponses({
+        @ApiResponse(code = 200, message = "성공"),
+        @ApiResponse(code = 401, message = "권한 없음")
+    })
+	public String getRoomInfo(
+			@ApiIgnore Authentication authentication,
+			@PathVariable int roomId) {
+		Room room=roomService.getRoomById(roomId);
+		JsonObject temp=new JsonObject();
+		temp.addProperty("roomId", room.getId());
+		
+		UserRoom userRoom=userRoomService.getHostIdByRoomId(room.getId());
+		User tempuser=userService.getUserById(userRoom.getUserId());
+		temp.addProperty("hostId",userRoom.getUserId());
+		temp.addProperty("hostNickname",tempuser.getUserEmail());
+		temp.addProperty("callStartTime", room.getCallStartTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+		temp.addProperty("title", room.getTitle());
+		temp.addProperty("descript", room.getDescript());
+		temp.addProperty("isPrivate", room.getIsPrivate());
+		temp.addProperty("game", room.getGame());
+		
+		List<UserRoom>tempUserRoom=userRoomService.getMemberIdByRoomId(room.getId());
+		JsonArray userInfos=new JsonArray();
+		for (UserRoom data : tempUserRoom) {
+			JsonObject info=new JsonObject();
+			User tempUser=userService.getUserById(data.getUserId());
+			info.addProperty("userId", tempUser.getId());
+			info.addProperty("userEmail", tempUser.getUserEmail());
+			info.addProperty("userNickname", tempUser.getUserNickname());
+			userInfos.add(info);
+		}
+		temp.add("joinUsers", userInfos);
+		temp.addProperty("statusCode", 200);
+		temp.addProperty("message", "Success");
+		return temp.toString();
+
 	}
 }

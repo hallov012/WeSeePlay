@@ -3,8 +3,16 @@
     RoomPage <button @click="isSide = !isSide">Side On/Off</button>
   </div>
   <div class="row main-area">
-    <VideoArea :class="isSide ? 'col-9' : 'col-12'" :isSide="isSide" />
-    <SideArea :class="isSide ? 'col-3' : ''" v-if="isSide" />
+    <VideoArea
+      class="self-center"
+      :class="isSide ? 'col-9' : 'col-12'"
+      :isSide="isSide"
+    />
+    <SideArea
+      class="self-center"
+      :class="isSide ? 'col-3' : ''"
+      v-if="isSide"
+    />
   </div>
   <BottomBar @room-edit="isEditModal = !isEditModal" />
   <EditModal v-if="isEditModal" @close="isEditModal = false">
@@ -44,5 +52,6 @@ const isLiarModal = ref(false)
   position: relative;
   padding-top: 10px;
   padding-bottom: 70px;
+  min-width: 794px;
 }
 </style>

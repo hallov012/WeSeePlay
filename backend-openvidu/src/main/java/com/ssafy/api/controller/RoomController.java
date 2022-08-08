@@ -125,23 +125,25 @@ public class RoomController {
 		String userEmail = userDetails.getUsername();
 		User user = userService.getUserByUserEmail(userEmail);
 		long roomId = Long.parseLong(roomInfo.get("roomId"));
-		
 		try {
 			room = roomService.getRoomById(roomId);
 		} catch (NoSuchElementException e) {
 			return ResponseEntity.status(400).body(BaseResponseBody.of(400, "Bad Request - No Room"));
 		}
-		
 		if(user != null) {
 			int count = userRoomService.getJoinCount(roomId);
 			if(count<12) {
-				if(roomInfo.get("inputPassword")==null &&room.getRoomPassword()==null) {
+				if(roomInfo.get("inputPassword")==null&&room.getRoomPassword()==null) {
 					roomService.createUserRoom(roomId, user.getId(), 0, 0);
 					roomService.plus(roomId);
-				}else if(passwordEncoder.matches(roomInfo.get("inputPassword"),room.getRoomPassword())){
+				}else if(roomInfo.get("inputPassword")==null||room.getRoomPassword()==null ) {
+					return ResponseEntity.status(400).body(BaseResponseBody.of(400, "Bad Request - Bad Password"));
+				}
+				else if(passwordEncoder.matches(roomInfo.get("inputPassword"),room.getRoomPassword())){
 					roomService.createUserRoom(roomId, user.getId(), 0, 0);
 					roomService.plus(roomId);
-				}else {
+				}
+				else {
 					return ResponseEntity.status(400).body(BaseResponseBody.of(400, "Bad Request - Bad Password"));
 				}
 			}else {
@@ -253,11 +255,14 @@ public class RoomController {
     })
 	public String getRoomList(
 			@ApiIgnore Authentication authentication, @RequestParam HashMap<String, Object>map ) {
+		System.out.println("3333333333333333333");
 		SsafyUserDetails userDetails = (SsafyUserDetails)authentication.getDetails();
 		String userEmail = userDetails.getUsername();
 		User user = userService.getUserByUserEmail(userEmail);
 		JsonObject jo=new JsonObject();
+		System.out.println("11111111111111111111");
 		Page<Room> totalRoomList=roomService.getRoomList(map);
+		System.out.println("22222222222222222222"); 
 		List<Room> roomList=totalRoomList.getContent();
 		JsonArray jsonArray=new JsonArray();
 		jo.addProperty("totalPage",totalRoomList.getTotalPages());

@@ -56,7 +56,7 @@ router.beforeEach((to, from, next) => {
 
   // 로그인 된 경우
   if (isLoggedin) {
-    if (to.name === 'startpage') {
+    if (to.name === 'startpage' || to.name === 'kakaologin') {
       next({ name: 'mainpage' })
     } else {
       next()

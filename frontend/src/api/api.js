@@ -15,7 +15,7 @@ const CERTIFICATION = '/certification'
 // const KakaoLogin = 'http://localhost:8081/login/kakao'
 const KakaoLogin = 'https://i7a501.p.ssafy.io/login/kakao'
 
-const kakaoSendToken = 'http://i7a501.p.ssafy.io/api/v1/users/oauth/kakao'
+const kakaoSendToken = 'https://i7a501.p.ssafy.io/api/v1/users/oauth/kakao'
 
 // const kakaoSendToken = 'http://localhost:8080/api/v1/oauth/kakao'
 

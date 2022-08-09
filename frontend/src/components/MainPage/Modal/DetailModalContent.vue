@@ -25,7 +25,9 @@
     <span>참여자 목록 ({{ userNum }})</span>
     <div class="user-list">
       <div>{{ info.hostNickname }}</div>
-      <div v-for="(user, idx) in info.joinUsers" :key="idx">{{ user }}</div>
+      <div v-for="(user, idx) in info.joinUsers" :key="idx">
+        {{ user.userNickname }}
+      </div>
     </div>
   </div>
   <div v-else class="user-input room-pw-input">

@@ -45,7 +45,7 @@
       </div>
       <div class="middleIconDiv">
         <input
-          @click="killRoom"
+          @click="leaveRoom"
           class="input exitInput"
           id="exitInput"
           type="checkbox"
@@ -99,8 +99,9 @@
 <script setup>
 import store from "@/store"
 import api from "@/api/api"
+import { useRouter } from "vue-router"
 import { ref } from "vue"
-
+const router = useRouter()
 // 마이크가 오픈되어 있지 않음 => 기본값
 const isMicOpen = ref(false)
 
@@ -111,12 +112,19 @@ const isVideoOpen = ref(false)
 const isSettingOpen = ref(false)
 
 // 빠져나가는 버튼
-const killRoom = async function () {
+const leaveRoom = async function () {
+  if (
+    store.getters.getRoomInfo.hostNickname === store.getters.me.userNickname
+  ) {
+    return
+  }
+
   const data = {
     roomId: store.getters.getRoomInfo.roomId,
   }
-  const res = await api.room.killRoom(data)
-  console.log(res)
+  const res = await api.room.leaveRoom(data)
+  console.log("leave 결과: ", res)
+  router.push({ name: "mainpage" })
 }
 
 // sideArea 묶음 버튼

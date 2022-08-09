@@ -38,7 +38,7 @@ const sendAxios = async function (req) {
   try {
     res = await axios(req)
   } catch (error) {
-    res = error.response.data
+    res = error.response
   }
   return res
 }
@@ -96,10 +96,11 @@ export default {
 
     editRoom: (roomId) => HOST + ROOMS + `/${roomId}`,
 
-    killRoom: async (data) => {
-      const req = setRequest("DELETE", "", data)
+    leaveRoom: async (data) => {
+      const req = setRequest("DELETE", "/leave", data)
       console.log("api.js의 req", req)
       const res = await sendAxios(req)
+      await store.dispatch("getRoomInfo", data.roomId)
       return res
     },
   },

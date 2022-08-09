@@ -1,7 +1,7 @@
 // 회원 서버 URL
 
 import store from "@/store"
-
+import axios from "axios"
 // const HOST = "http://localhost:8080/api/v1"
 const HOST = "https://i7a501.p.ssafy.io/api/v1"
 
@@ -33,15 +33,15 @@ const setRequest = function (method, url, data) {
   return req
 }
 
-// const sendAxios = async function (req) {
-//   let res = ""
-//   try {
-//     res = axios(req)
-//   } catch (error) {
-//     res = error
-//   }
-//   return res
-// }
+const sendAxios = async function (req) {
+  let res = ""
+  try {
+    res = await axios(req)
+  } catch (error) {
+    res = error.response.data
+  }
+  return res
+}
 export default {
   // 회원 관련 API
   users: {
@@ -96,9 +96,11 @@ export default {
 
     editRoom: (roomId) => HOST + ROOMS + `/${roomId}`,
 
-    killRoom: (data) => {
-      const res = setRequest("DELETE", "", data)
-      console.log(res)
+    killRoom: async (data) => {
+      const req = setRequest("DELETE", "", data)
+      console.log("api.js의 req", req)
+      const res = await sendAxios(req)
+      return res
     },
   },
 }

@@ -45,7 +45,7 @@
       </div>
       <div class="middleIconDiv">
         <input
-          @click="backToLounge"
+          @click="killRoom"
           class="input exitInput"
           id="exitInput"
           type="checkbox"
@@ -97,8 +97,9 @@
 </template>
 
 <script setup>
-import store from '@/store'
-import { ref } from 'vue'
+import store from "@/store"
+import api from "@/api/api"
+import { ref } from "vue"
 
 // 마이크가 오픈되어 있지 않음 => 기본값
 const isMicOpen = ref(false)
@@ -110,18 +111,22 @@ const isVideoOpen = ref(false)
 const isSettingOpen = ref(false)
 
 // 빠져나가는 버튼
-const backToLounge = function () {
-  console.log('라운지로 숑숑숑')
+const killRoom = async function () {
+  const data = {
+    roomId: store.getters.getRoomInfo.roomId,
+  }
+  const res = await api.room.killRoom(data)
+  console.log(res)
 }
 
 // sideArea 묶음 버튼
 const sideAreaBundle = ref(false)
 
 const clickSidebarIcon = function (event) {
-  store.dispatch('openSidebar', event.target.id)
+  store.dispatch("openSidebar", event.target.id)
 }
 </script>
 
 <style scoped>
-@import url('../../../src/assets/roompage/bottombar.css');
+@import url("../../../src/assets/roompage/bottombar.css");
 </style>

@@ -99,6 +99,8 @@ export default {
           }
         }
 
+        console.log(data.value)
+
         const response = await axios({
           url: api.room.enterRoom(),
           method: "POST",

@@ -175,7 +175,6 @@ public class RoomController {
 		String userEmail = userDetails.getUsername();
 		User user = userService.getUserByUserEmail(userEmail);
 		long roomId = (long) roomInfo.get("roomId");
-		
 		try {
 			Room room = roomService.getRoomById(roomId);
 		} catch (NoSuchElementException e) {
@@ -186,7 +185,7 @@ public class RoomController {
 			if(check) {
 				roomService.minus(roomId);
 			}else {
-				return ResponseEntity.status(400).body(BaseResponseBody.of(400, "Bad Request - No User"));
+				return ResponseEntity.status(400).body(BaseResponseBody.of(400, "Bad Request"));
 			}
 		} else {
 			return ResponseEntity.status(400).body(BaseResponseBody.of(400, "Bad Request - No User"));

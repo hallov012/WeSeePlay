@@ -22,11 +22,12 @@ public class UserRoomServiceImpl implements UserRoomService{
 
 	@Override
 	public Boolean deleteUserRoom(long roomId, long userId) {
-		UserRoom userRoom=userRoomRepository.findByRoomIdAndUserId((int)roomId,(int)userId);
-		if(userRoom==null) {
+		UserRoom userRoom=userRoomRepository.findByRoomIdAndUserId(roomId,userId);
+		System.out.println(roomId+"         "+userId);
+		if(userRoom==null || userRoom.getIsHost()==1) {
 			return false;
 		}
-		userRoomRepository.deleteByRoomIdAndUserId((int)roomId,(int)userId);
+		userRoomRepository.deleteByRoomIdAndUserId(roomId,userId);
 		return true;
 	}
 

@@ -113,9 +113,9 @@ const isSettingOpen = ref(false)
 
 // 빠져나가는 버튼
 const leaveRoom = async function () {
-  if (
-    store.getters.getRoomInfo.hostNickname === store.getters.me.userNickname
-  ) {
+  const hostNickname = store.getters.getRoomInfo.hostNickname
+  const myNickname = store.getters.me.userNickname
+  if (hostNickname === myNickname) {
     return
   }
 

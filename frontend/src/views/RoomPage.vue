@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import { ref, watchEffect } from "vue"
+import { ref, watchEffect, onMounted } from "vue"
 import VideoArea from "@/components/RoomPage/VideoArea.vue"
 import SideArea from "@/components/RoomPage/SideArea.vue"
 import BottomBar from "@/components/RoomPage/BottomBar.vue"
@@ -40,13 +40,15 @@ const route = useRoute()
 const roomId = route.params.roomId
 const store = useStore()
 
-store.dispatch("getRoomInfo", roomId)
+onMounted(async () => {
+  await store.dispatch("getRoomInfo", roomId)
+})
 
 watchEffect(() => {
   const roomInfo = store.getters.getRoomInfo
-  const userInfo = store.getters.getUserInfo
-  console.log(roomInfo)
-  console.log(userInfo)
+  const userInfo = roomInfo.joinUsers
+  console.log("RoomPage.vue => Room 정보 조회: ", roomInfo)
+  console.log("RoomPage.vue => User 정보 조회: ", userInfo)
 })
 
 // SideArea Open 정보

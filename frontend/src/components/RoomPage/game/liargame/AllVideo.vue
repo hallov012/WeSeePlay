@@ -67,8 +67,6 @@ watchEffect(() => {
   maxPages.value[0] = parseInt((props.users.length - 1) / 6)
   maxPages.value[1] = parseInt((props.users.length - 1) / 3)
 })
-
-console.log(currentPage.value, maxPages.value[side.value])
 </script>
 
 <style scoped>

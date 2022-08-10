@@ -42,6 +42,7 @@ const sendAxios = async function (req) {
   }
   return res
 }
+
 export default {
   // 회원 관련 API
   users: {
@@ -98,7 +99,6 @@ export default {
 
     leaveRoom: async (data) => {
       const req = setRequest("DELETE", "/leave", data)
-      console.log("api.js의 req", req)
       const res = await sendAxios(req)
       await store.dispatch("getRoomInfo", data.roomId)
       return res

@@ -102,7 +102,6 @@ export default {
           inputPassword.value = ""
         }
 
-        console.log(originPrivate.value)
         // 공개방에서 공개, 비공개로 전환하는 경우
         if (!originPrivate.value) {
           if (roomInfo.value.isPrivate == 1) {
@@ -153,6 +152,7 @@ export default {
             icon: "success",
             text: "방 정보 수정이 완료되었습니다",
           })
+          store.dispatch("getRoomInfo", roomId)
           context.emit("close")
         }
       } catch (err) {

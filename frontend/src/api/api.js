@@ -103,5 +103,12 @@ export default {
       await store.dispatch("getRoomInfo", data.roomId)
       return res
     },
+
+    killRoom: async (data) => {
+      const req = setRequest("DELETE", "", data)
+      const res = await sendAxios(req)
+      await store.dispatch("getRoomInfo", data.roomId)
+      return res
+    },
   },
 }

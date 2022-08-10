@@ -1,8 +1,7 @@
 // 회원 서버 URL
-
 import store from "@/store"
 import axios from "axios"
-// const HOST = "http://localhost:8080/api/v1"
+// const HOST = "http://localhost:8010/api/v1"
 const HOST = "https://i7a501.p.ssafy.io/api/v1"
 
 const USERS = "/users"
@@ -14,13 +13,13 @@ const ROOMS = "/rooms"
 const CERTIFICATION = "/certification"
 
 // 아래 카카오 로그인을 할 때는, 프론트엔드쪽으로 포트 번호를 맞추어야 한다
-// 즉 로컬 서버로 연결할 때는 8081, 배포 서버로 날릴 때는 8080으로 날리자
-// const KakaoLogin = 'http://localhost:8081/login/kakao'
+// 즉 로컬 서버로 연결할 때는 8080, 배포 서버로 날릴 때는 본 주소로 날리자
+// const KakaoLogin = 'http://localhost:8080/login/kakao'
 const KakaoLogin = "https://i7a501.p.ssafy.io/login/kakao"
 
 const kakaoSendToken = "https://i7a501.p.ssafy.io/api/v1/users/oauth/kakao"
+// const kakaoSendToken = 'http://localhost:8010/api/v1/oauth/kakao'
 
-// const kakaoSendToken = 'http://localhost:8080/api/v1/oauth/kakao'
 const setRequest = function (method, url, data) {
   const req = {
     url: HOST + ROOMS + url,

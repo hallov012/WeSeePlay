@@ -1,6 +1,8 @@
 // 회원 서버 URL
+import store from "@/store"
+
 // const HOST = "http://localhost:8010/api/v1"
-const HOST = 'https://i7a501.p.ssafy.io/api/v1'
+const HOST = "https://i7a501.p.ssafy.io/api/v1"
 
 const USERS = '/users'
 
@@ -18,6 +20,27 @@ const KakaoLogin = 'https://i7a501.p.ssafy.io/login/kakao'
 const kakaoSendToken = 'https://i7a501.p.ssafy.io/api/v1/users/oauth/kakao'
 // const kakaoSendToken = 'http://localhost:8010/api/v1/oauth/kakao'
 
+const setRequest = function (method, url, data) {
+  const req = {
+    url: HOST + ROOMS + url,
+    method,
+    headers: store.getters.authHeader,
+  }
+  if (data !== "") {
+    req.data = data
+  }
+  return req
+}
+
+// const sendAxios = async function (req) {
+//   let res = ""
+//   try {
+//     res = axios(req)
+//   } catch (error) {
+//     res = error
+//   }
+//   return res
+// }
 export default {
   // 회원 관련 API
   users: {
@@ -71,5 +94,10 @@ export default {
     enterRoom: () => HOST + ROOMS + '/enter',
 
     editRoom: (roomId) => HOST + ROOMS + `/${roomId}`,
+
+    killRoom: (data) => {
+      const res = setRequest("DELETE", "", data)
+      console.log(res)
+    },
   },
 }

@@ -77,6 +77,20 @@ export default {
       }
     })
 
+    const userInList = function (nickname) {
+      const userList = info.value.joinUsers
+      const rst = ref(false)
+      if (info.value.hostNickname === nickname) {
+        return true
+      }
+      userList.forEach((user) => {
+        if (user.userNickname === nickname) {
+          rst.value = true
+        }
+      })
+      return rst.value
+    }
+
     const joinRoom = async function () {
       try {
         if (info.value.game === 2) {
@@ -85,13 +99,25 @@ export default {
             text: "게임 중인 방에는 입장할 수 없습니다",
           })
           return
+        } else if (userInList(store.getters.me.userNickname) === true) {
+          Swal.fire({
+            icon: "error",
+            html: "이미 참가 중인 방 입니다! <br><br> 2초 후, Room으로 이동합니다.",
+            timer: 2000,
+          })
+          await setTimeout(() => {
+            router.push({ name: "roompage", params: { roomId: props.roomId } })
+          }, 2000)
+          return
         }
-
         const data = ref({})
 
         data.value = {
           roomId: props.roomId,
-          inputPassword: passwordInput.value,
+        }
+
+        if (info.value.isPrivate === 1) {
+          data.value.inputPassword = passwordInput.value
         }
 
         const response = await axios({

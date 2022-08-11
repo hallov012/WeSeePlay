@@ -87,7 +87,7 @@ export default {
   /* ---------- ROOM 관련 API ---------- */
   room: {
     // ROOM 생성, 삭제, 조회를 한번에!
-    // createRoom: () => HOST + ROOMS,
+
     createRoom: async (data) => {
       const req = setRequest("POST", "", data)
       const res = await sendAxios(req)
@@ -108,14 +108,12 @@ export default {
     leaveRoom: async (data) => {
       const req = setRequest("DELETE", "/leave", data)
       const res = await sendAxios(req)
-      await store.dispatch("getRoomInfo", data.roomId)
       return res
     },
 
     killRoom: async (data) => {
       const req = setRequest("DELETE", "", data)
       const res = await sendAxios(req)
-      await store.dispatch("getRoomInfo", data.roomId)
       return res
     },
   },

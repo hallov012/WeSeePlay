@@ -1,7 +1,6 @@
 // 회원 서버 URL
 import store from "@/store"
 import axios from "axios"
-// const HOST = "http://localhost:8010/api/v1"
 const HOST = "https://i7a501.p.ssafy.io/api/v1"
 
 const USERS = "/users"

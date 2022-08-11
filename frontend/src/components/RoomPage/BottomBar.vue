@@ -104,8 +104,8 @@
 <script setup>
 import store from "@/store"
 import api from "@/api/api"
-import { useRouter, watchEffect } from "vue-router"
-import { ref } from "vue"
+import { useRouter } from "vue-router"
+import { ref, watchEffect } from "vue"
 import Swal from "sweetalert2"
 const router = useRouter()
 // 마이크가 오픈되어 있지 않음 => 기본값
@@ -173,12 +173,17 @@ const killConfirm = async function () {
 const killRoom = async function () {
   const rst = await killConfirm()
   if (rst === true) {
-    Swal.fire("방 삭제 완료!", "", "success")
     const data = { roomId: store.getters.getRoomInfo.roomId }
     const res = await api.room.killRoom(data)
     console.log("kill-room", res)
     if (res.status === 200) {
+      Swal.fire("방 삭제 완료!", "", "success")
       router.push({ name: "mainpage" })
+    } else {
+      Swal.fire({
+        title: "방 삭제 실패",
+        html: `ErrorCode(${res.status})<br><br>지속 발생 시 관리자에게 문의해주세요`,
+      })
     }
   }
 }

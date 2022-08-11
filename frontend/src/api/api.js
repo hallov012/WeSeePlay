@@ -89,7 +89,7 @@ export default {
     // ROOM 생성, 삭제, 조회를 한번에!
     // createRoom: () => HOST + ROOMS,
     createRoom: async (data) => {
-      const req = setRequest("POST", "", { data })
+      const req = setRequest("POST", "", data)
       const res = await sendAxios(req)
       return res
     },

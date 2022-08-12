@@ -1,5 +1,4 @@
 import api from "@/api/api"
-import axios from "axios"
 import Swal from "sweetalert2"
 import router from "@/router"
 
@@ -42,32 +41,20 @@ export default {
     setRoomInfo: ({ commit }, data) => {
       commit("SET_ROOM_INFO", data)
     },
-    // 룸 정보 받는 함수
-    getRoomInfo: async function ({ getters, dispatch }, roomID) {
-      try {
-        const response = await axios({
-          method: "GET",
-          headers: getters.authHeader,
-          url: api.room.roomInfo(roomID),
-        })
 
-        if (response.status === 200) {
-          dispatch("setRoomInfo", response.data)
-        } else {
-          Swal.fire({
-            icon: "error",
-            text: "존재하지 않는 방입니다",
-          })
-          router.push({ name: "errorpage", params: { errorname: "404" } })
-        }
-      } catch (err) {
-        Swal.fire({
-          icon: "error",
-          text: "잘못된 접근입니다",
-        })
+    // 룸 정보 받는 함수
+    getRoomInfo: async function ({ dispatch }, roomId) {
+      const { data } = await api.room.roomInfo(roomId)
+      const status = data.statusCode
+      if (status === 200) {
+        dispatch("setRoomInfo", data)
+      } else if (status === 404) {
+        router.push({ name: "errorpage", params: { errorname: "404" } })
+      } else {
         router.push({ name: "errorpage", params: { errorname: "500" } })
       }
     },
+
     // 매시지 추가하는 함수
     addMessage: function ({ commit }, message) {
       commit("ADD_MESSAGE", message)

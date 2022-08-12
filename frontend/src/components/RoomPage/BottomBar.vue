@@ -3,7 +3,7 @@
     <!-- <button @click="">임시버튼</button> -->
     <div class="triColumn"></div>
     <div class="triColumn">
-      <div class="middleIconDiv">
+      <div class="middleIconDiv" @click="$emit('audio-toggle')">
         <label @click="onOffMic" class="btn">
           <i v-if="isMicOpen" class="fa-solid fa-microphone-lines fa-2x"></i>
           <i
@@ -12,7 +12,7 @@
           ></i>
         </label>
       </div>
-      <div class="middleIconDiv">
+      <div class="middleIconDiv" @click="$emit('video-toggle')">
         <label @click="onOffVideo" class="btn">
           <i v-if="isVideoOpen" class="fa-solid fa-video fa-2x"></i>
           <i

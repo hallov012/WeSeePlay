@@ -74,17 +74,21 @@ const leaveOrKill = async function () {
   console.log(`isHost: ${hostEmail} ${userEmail}`, `roomId: ${roomId}`)
   if (isHost) {
     await api.room.killRoom(data)
-    Swal.fire({
-      title: "당신은 Host 군요",
-      text: "방을 삭제했습니다.",
-    })
+    await setTimeout(() => {
+      Swal.fire({
+        title: "당신은 Host 군요",
+        text: "방을 삭제했습니다.",
+      })
+    }, 1000)
     return
   } else {
     await api.room.leaveRoom(data)
-    Swal.fire({
-      title: "당신은 User 군요",
-      text: "방에서 나갔습니다.",
-    })
+    await setTimeout(() => {
+      Swal.fire({
+        title: "당신은 User 군요",
+        text: "방에서 나갔습니다.",
+      })
+    }, 1000)
     return
   }
 }

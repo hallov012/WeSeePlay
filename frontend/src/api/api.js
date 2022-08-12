@@ -19,7 +19,7 @@ const KakaoLogin = "https://i7a501.p.ssafy.io/login/kakao"
 const kakaoSendToken = "https://i7a501.p.ssafy.io/api/v1/users/oauth/kakao"
 // const kakaoSendToken = 'http://localhost:8010/api/v1/oauth/kakao'
 
-const setRequest = function (method, url, data) {
+const setRequest = function (method, url, data = "") {
   const req = {
     url: HOST + ROOMS + url,
     method,
@@ -94,11 +94,19 @@ export default {
       return res
     },
 
-    roomInfo: (roomId) => HOST + ROOMS + `/info/${roomId}`,
+    roomInfo: async (roomId) => {
+      const req = setRequest("GET", `/info/${roomId}`)
+      const res = await sendAxios(req)
+      return res
+    },
 
-    enterRoom: () => HOST + ROOMS + "/enter",
+    // enterRoom: () => HOST + ROOMS + "/enter",
+    enterRoom: async (data) => {
+      const req = setRequest("POST", "/enter", data)
+      const res = await sendAxios(req)
+      return res
+    },
 
-    // 여기
     editRoom: async (roomId, data) => {
       const req = setRequest("PATCH", `/${roomId}`, data)
       const res = await sendAxios(req)

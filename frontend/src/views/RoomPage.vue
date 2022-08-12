@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import { ref, watchEffect, onBeforeUnmount } from "vue"
+import { ref, watchEffect, onBeforeUnmount, onMounted } from "vue"
 import VideoArea from "@/components/RoomPage/VideoArea.vue"
 import SideArea from "@/components/RoomPage/SideArea.vue"
 import BottomBar from "@/components/RoomPage/BottomBar.vue"

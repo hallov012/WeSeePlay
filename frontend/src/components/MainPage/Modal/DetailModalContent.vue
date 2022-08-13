@@ -83,7 +83,7 @@ const joinError = async function (key) {
 const joinRoom = async function () {
   // api.js 에 데이터(req) 넘기기
   const req = {
-    roomId: info.value.roomId + 10,
+    roomId: info.value.roomId,
     inputPassword: passwordInput.value,
   }
 

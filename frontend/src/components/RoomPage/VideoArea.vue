@@ -1,17 +1,16 @@
 <template>
   <div>
     <!-- 이 버튼 어차피 나중에 날릴 것이므로 -->
-    <button style="position: absolute; top: 1rem" @click="changeGame()">
+    <button style="position: absolute; top: 1rem" @click="gameStart">
       Game On/Off
     </button>
     <!-- isGameMode가 참이면 GameVideo가 나오게 하고, false라면 MeetingVideo가 나오게 짰어-->
     <LiarGameVideo
       v-if="isGameMode === 2"
-      :users="userList"
       :isSide="isSide"
       :roomId="roomId"
-      :publisher="state.publisher"
-      :subscribers="state.subscribers"
+      :setting="gameSet"
+      :session="state.session"
     />
     <MeetingVideo
       v-if="isGameMode === 1"
@@ -66,18 +65,105 @@ const isGameMode = ref(store.getters.getRoomInfo.game)
 watchEffect(() => {
   isGameMode.value = store.getters.getRoomInfo.game
 })
-const changeGame = function () {
-  if (isGameMode.value === 1) {
-    isGameMode.value = 2
-    console.log("gamemode: ", isGameMode.value)
-    return
-  } else {
-    isGameMode.value = 1
-    console.log("gamemode: ", isGameMode.value)
-    return
+// 게임 정보
+const gameSet = reactive({
+  gameIdx: 0,
+  isGameNow: 0,
+  suggestion: "",
+  maxRound: 0,
+  liar: "",
+  passedTurn: 0,
+  passedRound: 0,
+  gameUserList: [],
+  gameUserOrder: [],
+  liarInput: "",
+  liarInputModal: false,
+  isVoteNow: false,
+  gameResult: false,
+  gameResultModal: false,
+  votingProcess: {},
+  skipNum: 0,
+  voteNum: 0,
+})
+// const changeGame = function () {
+//   if (isGameMode.value === 1) {
+//     isGameMode.value = 2
+//     console.log("gamemode: ", isGameMode.value)
+//     return
+//   } else {
+//     isGameMode.value = 1
+//     console.log("gamemode: ", isGameMode.value)
+//     return
+//   }
+// }
+function shuffle(array) {
+  for (let index = array.length - 1; index > 0; index--) {
+    // 무작위 index 값을 만든다. (0 이상의 배열 길이 값)
+    const randomPosition = Math.floor(Math.random() * (index + 1))
+
+    // 임시로 원본 값을 저장하고, randomPosition을 사용해 배열 요소를 섞는다.
+    const temporary = array[index]
+    array[index] = array[randomPosition]
+    array[randomPosition] = temporary
   }
 }
+function pickLiar(array) {
+  const randomPosition = Math.floor(Math.random() * array.length)
+  return array[randomPosition]
+}
+const gameStart = function () {
+  gameSet.gameUserOrder = [] // 초기화
+  gameSet.gameUserList.value = []
+  state.subscribers.forEach(function (element) {
+    gameSet.gameUserList.value.push(
+      JSON.parse(element.stream.connection.data).clientData
+    )
+    // gameSet.gameUserOrder.push(element)
+  })
+  gameSet.gameUserList.value.push(state.myUserName)
+  gameSet.maxRound = 5
+  gameSet.suggestion = "사자"
+  shuffle(gameSet.gameUserList.value)
+  gameSet.liar = pickLiar(gameSet.gameUserList.value)
 
+  state.session
+    .signal({
+      data: gameSet.liar,
+      to: [],
+      type: "whoIsLiar",
+    })
+    .then(() => {
+      console.log("who is Liar")
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+
+  state.session
+    .signal({
+      data: gameSet.gameUserList.value.join(),
+      to: [],
+      type: "gameOrder",
+    })
+    .then(() => {
+      console.log("gameOrder")
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+  state.session
+    .signal({
+      data: "2," + gameSet.suggestion + "," + String(gameSet.maxRound),
+      to: [],
+      type: "gameStart",
+    })
+    .then(() => {
+      console.log("game Start!")
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+}
 const userList = ref([]) // Component에 넘겨줄 user list
 const props = defineProps({
   isSide: {
@@ -121,40 +207,9 @@ const state = reactive({
   publisher: undefined,
   subscribers: [],
   mySessionId: props.roomId,
-  //   computed(() => props.roomId),
-  // myUserName: "Participant" + Math.floor(Math.random() * 100),
   myUserName: undefined,
+  playersNum: 1,
 })
-
-// const vidoman = reactive({
-//   publishVideo: true,
-//   publishAudio: true,
-// })
-
-// const sortvideo = reactive({
-//   videoOn: computed(() => {
-//     let videoOn = []
-//     if (state.subscribers.length) {
-//       state.subscribers.forEach(function (element) {
-//         if (element.stream.videoActive) {
-//           videoOn.push(element)
-//         }
-//       })
-//     }
-//     return videoOn
-//   }),
-//   videoOff: computed(() => {
-//     let videoOff = []
-//     if (state.subscribers.length) {
-//       state.subscribers.forEach(function (element) {
-//         if (!element.stream.videoActive) {
-//           videoOff.push(element)
-//         }
-//       })
-//     }
-//     return videoOff
-//   }),
-// })
 
 // toggle
 watchEffect(() => {
@@ -186,8 +241,7 @@ const joinSession = () => {
   state.session.on("streamCreated", ({ stream }) => {
     const subscriber = state.session.subscribe(stream)
     state.subscribers.push(subscriber)
-    console.log(JSON.parse(subscriber.stream.connection.data).clientData)
-    console.log("연결 돼ㅐㅆ냐?")
+    state.playersNum += 1
     // 여기서 플레이어 숫자 계산
   })
   // 메시지 캐치하는 부분
@@ -241,6 +295,59 @@ const joinSession = () => {
   state.session.on("exception", ({ exception }) => {
     console.warn(exception)
   })
+
+  // liar Game
+  state.session.on("signal:gameStart", (data) => {
+    console.log("게임이 시작 되었는가?????????????")
+    let info = data.data.split(",")
+    console.log(info)
+    gameSet.suggestion = info[1]
+    gameSet.maxRound = parseInt(info[2])
+    isGameMode.value = parseInt(info[0])
+  })
+  state.session.on("signal:whoIsLiar", (data) => {
+    console.log(data.data)
+    gameSet.liar = data.data
+  })
+  state.session.on("signal:gameOrder", (data) => {
+    console.log(data.data)
+    gameSet.gameUserList.value = data.data.split(",")
+    for (let p = 0; p < state.playersNum; p++) {
+      let flag = 0
+      state.subscribers.forEach(function (element) {
+        if (
+          gameSet.gameUserList.value[p] ===
+          JSON.parse(element.stream.connection.data).clientData
+        ) {
+          // console.log(JSON.parse(element.stream.connection.data).clientData)
+          gameSet.gameUserOrder.push(element)
+          flag = 1
+        }
+      })
+      if (!flag) {
+        gameSet.gameUserOrder.push(state.publisher)
+      }
+    }
+  })
+  state.session.on("signal:gameIdxUp", (data) => {
+    console.log(data.data)
+    let flag = 0
+    gameSet.gameIdx += 1
+    if (gameSet.gameIdx >= state.playersNum) {
+      gameSet.gameIdx = 0
+      gameSet.passedRound += 1
+      flag = 1
+    }
+    gameSet.passedTurn += 1
+    // 모든 사용자 gameidx증가
+    if (flag && gameSet.passedRound > 1) {
+      // 만약에 라운드가 넘어갔다면 투표
+      console.log("왜 투표를 안하나요")
+      gameSet.isVoteNow = true
+    }
+    console.log("gameSet.gameIdx : ", gameSet.gameIdx)
+  })
+
   // 'getToken' method is simulating what your server-side should do.
   // 'token' parameter should be retrieved and returned by your own backend
   getToken(state.mySessionId).then((token) => {
@@ -371,6 +478,8 @@ const sendMsg = (data) => {
       console.error(error)
     })
 }
+
+//-----------------------------Liar Game--------------------------------
 
 // beforeunmount
 onBeforeUnmount(() => {

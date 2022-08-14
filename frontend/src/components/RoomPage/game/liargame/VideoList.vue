@@ -1,101 +1,101 @@
 <template>
   <div class="row video-list-area">
-    <div>{{ gameSet.gameIdx }}</div>
+    <div>{{ gameSet.gameIdx }}, {{ tmpNum }}</div>
     <div>
       <MainVideo
-        v-if="gameSet.gameIdx == 0"
+        v-if="tmpNum == 0"
         class="self-center"
         :class="isSide ? 'col-7' : 'col-5'"
-        :user="gameSet.gameUserOrder[gameSet.gameIdx]"
-        :gameIdx="gameSet.gameIdx"
+        :user="gameSet.gameUserOrder[tmpNum]"
+        :gameIdx="tmpNum"
         @next="gameIdxUp"
       />
       <MainVideo
-        v-if="gameSet.gameIdx == 1"
+        v-if="tmpNum == 1"
         class="self-center"
         :class="isSide ? 'col-7' : 'col-5'"
-        :user="gameSet.gameUserOrder[gameSet.gameIdx]"
-        :gameIdx="gameSet.gameIdx"
+        :user="gameSet.gameUserOrder[tmpNum]"
+        :gameIdx="tmpNum"
         @next="gameIdxUp"
       />
       <MainVideo
-        v-if="gameSet.gameIdx == 2"
+        v-if="tmpNum == 2"
         class="self-center"
         :class="isSide ? 'col-7' : 'col-5'"
-        :user="gameSet.gameUserOrder[gameSet.gameIdx]"
-        :gameIdx="gameSet.gameIdx"
+        :user="gameSet.gameUserOrder[tmpNum]"
+        :gameIdx="tmpNum"
         @next="gameIdxUp"
       />
       <MainVideo
-        v-if="gameSet.gameIdx == 3"
+        v-if="tmpNum == 3"
         class="self-center"
         :class="isSide ? 'col-7' : 'col-5'"
-        :user="gameSet.gameUserOrder[gameSet.gameIdx]"
-        :gameIdx="gameSet.gameIdx"
+        :user="gameSet.gameUserOrder[tmpNum]"
+        :gameIdx="tmpNum"
         @next="gameIdxUp"
       />
       <MainVideo
-        v-if="gameSet.gameIdx == 4"
+        v-if="tmpNum == 4"
         class="self-center"
         :class="isSide ? 'col-7' : 'col-5'"
-        :user="gameSet.gameUserOrder[gameSet.gameIdx]"
-        :gameIdx="gameSet.gameIdx"
+        :user="gameSet.gameUserOrder[tmpNum]"
+        :gameIdx="tmpNum"
         @next="gameIdxUp"
       />
       <MainVideo
-        v-if="gameSet.gameIdx == 5"
+        v-if="tmpNum == 5"
         class="self-center"
         :class="isSide ? 'col-7' : 'col-5'"
-        :user="gameSet.gameUserOrder[gameSet.gameIdx]"
-        :gameIdx="gameSet.gameIdx"
+        :user="gameSet.gameUserOrder[tmpNum]"
+        :gameIdx="tmpNum"
         @next="gameIdxUp"
       />
       <MainVideo
-        v-if="gameSet.gameIdx == 6"
+        v-if="tmpNum == 6"
         class="self-center"
         :class="isSide ? 'col-7' : 'col-5'"
-        :user="gameSet.gameUserOrder[gameSet.gameIdx]"
-        :gameIdx="gameSet.gameIdx"
+        :user="gameSet.gameUserOrder[tmpNum]"
+        :gameIdx="tmpNum"
         @next="gameIdxUp"
       />
       <MainVideo
-        v-if="gameSet.gameIdx == 7"
+        v-if="tmpNum == 7"
         class="self-center"
         :class="isSide ? 'col-7' : 'col-5'"
-        :user="gameSet.gameUserOrder[gameSet.gameIdx]"
-        :gameIdx="gameSet.gameIdx"
+        :user="gameSet.gameUserOrder[tmpNum]"
+        :gameIdx="tmpNum"
         @next="gameIdxUp"
       />
       <MainVideo
-        v-if="gameSet.gameIdx == 8"
+        v-if="tmpNum == 8"
         class="self-center"
         :class="isSide ? 'col-7' : 'col-5'"
-        :user="gameSet.gameUserOrder[gameSet.gameIdx]"
-        :gameIdx="gameSet.gameIdx"
+        :user="gameSet.gameUserOrder[tmpNum]"
+        :gameIdx="tmpNum"
         @next="gameIdxUp"
       />
       <MainVideo
-        v-if="gameSet.gameIdx == 9"
+        v-if="tmpNum == 9"
         class="self-center"
         :class="isSide ? 'col-7' : 'col-5'"
-        :user="gameSet.gameUserOrder[gameSet.gameIdx]"
-        :gameIdx="gameSet.gameIdx"
+        :user="gameSet.gameUserOrder[tmpNum]"
+        :gameIdx="tmpNum"
         @next="gameIdxUp"
       />
       <MainVideo
-        v-if="gameSet.gameIdx == 10"
+        v-if="tmpNum == 10"
         class="self-center"
         :class="isSide ? 'col-7' : 'col-5'"
-        :user="gameSet.gameUserOrder[gameSet.gameIdx]"
-        :gameIdx="gameSet.gameIdx"
+        :user="gameSet.gameUserOrder[tmpNum]"
+        :gameIdx="tmpNum"
         @next="gameIdxUp"
       />
       <MainVideo
-        v-if="gameSet.gameIdx == 11"
+        v-if="tmpNum == 11"
         class="self-center"
         :class="isSide ? 'col-7' : 'col-5'"
-        :user="gameSet.gameUserOrder[gameSet.gameIdx]"
-        :gameIdx="gameSet.gameIdx"
+        :user="gameSet.gameUserOrder[tmpNum]"
+        :gameIdx="tmpNum"
         @next="gameIdxUp"
       />
     </div>
@@ -107,46 +107,47 @@
     />
     <!-- 일반인인지 라이어인지, 제시어 알려 주는 부분 -->
     <!-- <div v-if="gameSet.liar == userId">당신은 라이어 입니다.</div> -->
-    <div>제시어는 {{ gameSet.suggestion }} 입니다.</div>
+    <div v-if="isLiar">당신은 라이어 입니다.</div>
+    <div v-else>제시어는 {{ gameSet.suggestion }} 입니다.</div>
   </div>
 
-  <q-dialog v-model="gameSet.isVoteNow" persistent>
+  <q-dialog v-model="voteNow" persistent>
     <q-card style="min-width: 350px">
       <q-card-section>
-        <div v-for="pl in userList" :key="pl">
+        <div v-for="(pl, idx) in tmpUserList" :key="idx">
           <p @click="heIsLiar(pl)">
             {{ pl }}
           </p>
         </div>
         <div @click="heIsLiar('skip')">skip</div>
-        <div @click="gameSet.isVoteNow = false">끝</div>
+        <div @click="voteNow = false">끝</div>
       </q-card-section>
     </q-card>
   </q-dialog>
 
-  <q-dialog v-model="gameSet.liarInputModal" persistent>
+  <q-dialog v-model="liarInputNow" persistent>
     <q-card style="min-width: 350px">
       <q-card-section>
         <div>
-          <input type="text" v-model="gameSet.liarInput" />
+          <input type="text" v-model="liarInput" />
           <button @click="liarFinalInput()">입력하</button>
         </div>
 
-        <div @click="gameSet.liarInputModal = false">끝</div>
+        <div @click="liarInputNow = false">끝</div>
       </q-card-section>
     </q-card>
   </q-dialog>
 
-  <q-dialog v-model="gameSet.gameResultModal" persistent>
+  <q-dialog v-model="gameResultModal" persistent>
     <q-card style="min-width: 350px">
       <q-card-section>
         <div>
           <p>
-            {{ gameSet.gameResult }}
+            {{ tmpGameResult }}
           </p>
         </div>
 
-        <div @click="gameSet.gameResultModal = false">끝</div>
+        <div @click="gameResultModal = false">끝</div>
       </q-card-section>
     </q-card>
   </q-dialog>
@@ -155,7 +156,7 @@
 <script setup>
 import { ref, reactive, defineProps, watchEffect } from "vue"
 import MainVideo from "./MainVideo.vue"
-// import AllVideo from "./AllVideo.vue"
+import AllVideo from "./AllVideo.vue"
 
 const props = defineProps({
   isSide: {
@@ -174,14 +175,45 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+  isLiar: {
+    type: Boolean,
+  },
+  tmpNum: {
+    type: Number,
+  },
+  tmpvote: {
+    type: Boolean,
+  },
+  tmpliarInputModal: {
+    type: Boolean,
+  },
+  tmpUserList: {
+    type: Array,
+  },
+  tmpGameResultModal: {
+    type: Boolean,
+  },
+  tmpGameResult: {
+    type: String,
+  },
 })
 const gameSet = reactive({ ...props.setting })
+const voteNow = ref(false)
+const liarInputNow = ref(false)
+const gameResultModal = ref(false)
+const tmpGameResult = ref("")
+const liarInput = ref("")
 watchEffect(() => {
   console.log(gameSet.gameIdx)
+  if (!liarInputNow.value) {
+    voteNow.value = props.tmpvote
+  }
+  liarInputNow.value = props.tmpliarInputModal
+  gameResultModal.value = props.tmpGameResultModal
+  tmpGameResult.value = props.tmpGameResult
 })
 // 역기서 부터 게임 입니다.
 //여긴 game web socket
-const userList = ref([])
 console.log("여기는 왜 안들어 가 있는거야?", gameSet.gameUserOrder)
 // const gameSetting = function () {
 //   gameSet.maxRound = 5
@@ -190,6 +222,7 @@ console.log("여기는 왜 안들어 가 있는거야?", gameSet.gameUserOrder)
 //   gameSet.liar = pickLiar(userList.value)
 // }
 const gameIdxUp = function () {
+  console.log(gameSet.gameUserList)
   props.session
     .signal({
       data: 1,
@@ -204,7 +237,7 @@ const gameIdxUp = function () {
     })
 }
 const heIsLiar = function (suspect) {
-  gameSet.isVoteNow = false
+  voteNow.value = false
   props.session
     .signal({
       data: suspect,
@@ -219,11 +252,13 @@ const heIsLiar = function (suspect) {
     })
 }
 const liarFinalInput = function () {
+  liarInputNow.value = false
   let result = true
-  if (gameSet.liarInput == gameSet.suggestion) {
+  if (liarInput.value == gameSet.suggestion) {
     console.log("정답이다 멍청아")
     result = false
   }
+  console.log(result)
   props.session
     .signal({
       data: result,
@@ -236,8 +271,8 @@ const liarFinalInput = function () {
     .catch((error) => {
       console.error(error)
     })
-  gameSet.liarInput = ""
-  gameSet.liarInputModal = false
+  liarInput.value = ""
+  liarInputNow.value = false
 }
 // const endGame = function (result) {
 //   gameSet.isGameNow = 0

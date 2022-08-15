@@ -32,6 +32,13 @@ export default {
     let userInfo = [...props.userList]
 
     const check = function (user) {
+      const checkboxes = document.querySelectorAll(".check-box")
+      const skipBtn = document.querySelector(".skip-btn")
+      checkboxes.forEach((cb) => {
+        cb.checked = false
+      })
+      skipBtn.classList.remove("active")
+      event.target.checked = true
       suspect.value = user
     }
 

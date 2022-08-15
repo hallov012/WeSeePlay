@@ -1,7 +1,11 @@
 <template>
   <div>
     <!-- 이 버튼 어차피 나중에 날릴 것이므로 -->
-    <button style="position: absolute; top: 1rem" @click="gameStart">
+    <button
+      v-if="isGameMode === 1"
+      style="position: absolute; top: 1rem"
+      @click="gameStart"
+    >
       Game On/Off
     </button>
     <!-- isGameMode가 참이면 GameVideo가 나오게 하고, false라면 MeetingVideo가 나오게 짰어-->
@@ -27,24 +31,19 @@
       :subscribers="state.subscribers"
     />
   </div>
-  <!-- 모달 확인용 버튼 -->
-  <button @click="isCategoryModal = true">Category</button>
-  <button @click="isVoteModal = true">Vote!</button>
-  <button @click="isLiarInputModal = true">LiarInput!</button>
-  <button @click="isResultModal = true">Result!</button>
-  <CategoryModal v-if="isCategoryModal" @close="isCategoryModal = false" />
-  <VoteModal v-if="isVoteModal" @close="isVoteModal = false" />
-  <LiarInputModal v-if="isLiarInputModal" @close="isLiarInputModal = false" />
-  <ResultModal v-if="isResultModal" @close="isResultModal = false" />
+  <Resultmodal
+    v-if="tmpGameResultModal"
+    :whoWin="tmpGameResult"
+    :gameSet="gameSet"
+    @close="tmpGameResultModal = false"
+  />
 </template>
 
 <script setup>
 import LiarGameVideo from "./game/liargame/VideoList.vue"
 import MeetingVideo from "./meeting/VideoList.vue"
-import CategoryModal from "@/components/RoomPage/game/liargame/modal/CategoryModal.vue"
-import VoteModal from "@/components/RoomPage/game/liargame/modal/VoteModal.vue"
-import LiarInputModal from "@/components/RoomPage/game/liargame/modal/LiarInputModal.vue"
-import ResultModal from "@/components/RoomPage/game/liargame/modal/ResultModal.vue"
+import Resultmodal from "./game/liargame/modal/ResultModal.vue"
+
 import { ref, defineProps, watchEffect } from "vue"
 import store from "@/store"
 import { useStore } from "vuex"
@@ -57,27 +56,41 @@ import $axios from "axios"
 import { reactive, onBeforeUnmount, onMounted } from "vue"
 import { OpenVidu } from "openvidu-browser"
 // import UserVideo from "./components/UserVideo.vue"
-// import VoteModal from "./components/VoteModal.vue"
-// import VoteModalContent from "./components/VoteModalContent.vue"
+
 $axios.defaults.headers.post["Content-Type"] = "application/json"
 $axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*"
-
-// modal control
-const isCategoryModal = ref(false)
-const isVoteModal = ref(false)
-const isLiarInputModal = ref(false)
-const isResultModal = ref(false)
 
 // 다른 파일에서와는 다르게, 얘가 useStore임
 const usestore = useStore()
 
 const isGameMode = ref(store.getters.getRoomInfo.game)
 
+const initSetting = function () {
+  gameSet = reactive({
+    gameIdx: 0,
+    isGameNow: 0,
+    suggestion: "",
+    maxRound: 0,
+    liar: "",
+    passedTurn: 0,
+    passedRound: 0,
+    gameUserList: [],
+    gameUserOrder: [],
+    liarInput: "",
+    liarInputModal: false,
+    isVoteNow: false,
+    gameResult: false,
+    gameResultModal: false,
+    votingProcess: {},
+    skipNum: 0,
+    voteNum: 0,
+  })
+}
 watchEffect(() => {
   isGameMode.value = store.getters.getRoomInfo.game
 })
 // 게임 정보
-const gameSet = reactive({
+let gameSet = reactive({
   gameIdx: 0,
   isGameNow: 0,
   suggestion: "",
@@ -238,29 +251,33 @@ watchEffect(() => {
 //     state.publisher.publishAudio(false)
 //   }
 // }
-const endGame = function (result) {
+const endGame = async function (result) {
   console.log("게임좀 끝내줘 멍청아")
-  gameSet.gameResultModal = true
-  tmpGameResultModal.value = gameSet.gameResultModal
-  gameSet.gameResultModal = false
+
   result = Boolean(result)
-  console.log(result)
-  if (result) {
-    if (gameSet.liar === state.myUserName) {
-      gameSet.gameResult = "니가 졌어"
-    } else {
-      gameSet.gameResult = "이겼습니다."
-    }
-  } else {
-    console.log("여기까지 온거 아냐?")
-    if (gameSet.liar === state.myUserName) {
-      gameSet.gameResult = "이겼습니다"
-    } else {
-      gameSet.gameResult = "니가 졌어."
-    }
-  }
-  tmpGameResult.value = gameSet.gameResult
-  gameSet.gameResult = ""
+  console.log(`%c누가이겼냐 ${result}`, "color: white;background: red")
+  tmpGameResult.value = result
+
+  tmpGameResultModal.value = true
+  // if (result) {
+  //   if (gameSet.liar === state.myUserName) {
+  //     gameSet.gameResult = "유저 승리"
+  //   } else {
+  //     gameSet.gameResult = "라이어 패배"
+  //   }
+  // } else {
+  //   console.log("여기까지 온거 아냐?")
+  //   if (gameSet.liar === state.myUserName) {
+  //     gameSet.gameResult = "라이어 승리"
+  //   } else {
+  //     gameSet.gameResult = "유저 패배"
+  //   }
+  // }
+  // setTimeout(() => {
+  //   tmpGameResult.value = gameSet.gameResultModal
+  // }, 5000)
+  initSetting()
+  isGameMode.value = 1
 }
 
 const isLiar = ref(false)
@@ -269,7 +286,7 @@ const tmpvote = ref(false)
 const tmpliarInputModal = ref(false)
 const tmpUserList = ref([])
 const tmpGameResultModal = ref(false)
-const tmpGameResult = ref("")
+const tmpGameResult = ref(false)
 
 const joinSession = () => {
   // --- Get an OpenVidu object ---
@@ -356,10 +373,11 @@ const joinSession = () => {
     }
   })
   state.session.on("signal:gameOrder", (data) => {
+    console.log("%casdasdasdasd", "background: red;")
     console.log(data.data)
     gameSet.gameUserList.value = data.data.split(",")
     tmpUserList.value = gameSet.gameUserList.value
-    for (let p = 0; p < state.playersNum; p++) {
+    for (let p = 0; p < gameSet.gameUserList.value.length; p++) {
       let flag = 0
       state.subscribers.forEach(function (element) {
         if (
@@ -380,7 +398,7 @@ const joinSession = () => {
     console.log(data.data)
     let flag = 0
     gameSet.gameIdx += 1
-    if (gameSet.gameIdx >= state.playersNum) {
+    if (gameSet.gameIdx >= gameSet.gameUserList.value.length) {
       gameSet.gameIdx = 0
       gameSet.passedRound += 1
       flag = 1
@@ -415,7 +433,10 @@ const joinSession = () => {
     //투표 끝
     let maxKey
     let maxValue = 0
-    if (state.playersNum == gameSet.skipNum + gameSet.voteNum) {
+    if (
+      gameSet.gameUserList.value.length ==
+      gameSet.skipNum + gameSet.voteNum
+    ) {
       if (gameSet.skipNum < gameSet.voteNum) {
         // 스킵 되지 않은 경우
         for (const [key, value] of Object.entries(gameSet.votingProcess)) {

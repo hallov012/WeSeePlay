@@ -9,6 +9,7 @@
         :user="gameSet.gameUserOrder[tmpNum]"
         :gameIdx="tmpNum"
         @next="gameIdxUp"
+        :userEmail="gameSet.gameUserList.value[tmpNum]"
       />
       <MainVideo
         v-if="tmpNum == 1"
@@ -17,6 +18,7 @@
         :user="gameSet.gameUserOrder[tmpNum]"
         :gameIdx="tmpNum"
         @next="gameIdxUp"
+        :userEmail="gameSet.gameUserList.value[tmpNum]"
       />
       <MainVideo
         v-if="tmpNum == 2"
@@ -25,6 +27,7 @@
         :user="gameSet.gameUserOrder[tmpNum]"
         :gameIdx="tmpNum"
         @next="gameIdxUp"
+        :userEmail="gameSet.gameUserList.value[tmpNum]"
       />
       <MainVideo
         v-if="tmpNum == 3"
@@ -33,6 +36,7 @@
         :user="gameSet.gameUserOrder[tmpNum]"
         :gameIdx="tmpNum"
         @next="gameIdxUp"
+        :userEmail="gameSet.gameUserList.value[tmpNum]"
       />
       <MainVideo
         v-if="tmpNum == 4"
@@ -41,6 +45,7 @@
         :user="gameSet.gameUserOrder[tmpNum]"
         :gameIdx="tmpNum"
         @next="gameIdxUp"
+        :userEmail="gameSet.gameUserList.value[tmpNum]"
       />
       <MainVideo
         v-if="tmpNum == 5"
@@ -49,6 +54,7 @@
         :user="gameSet.gameUserOrder[tmpNum]"
         :gameIdx="tmpNum"
         @next="gameIdxUp"
+        :userEmail="gameSet.gameUserList.value[tmpNum]"
       />
       <MainVideo
         v-if="tmpNum == 6"
@@ -57,6 +63,7 @@
         :user="gameSet.gameUserOrder[tmpNum]"
         :gameIdx="tmpNum"
         @next="gameIdxUp"
+        :userEmail="gameSet.gameUserList.value[tmpNum]"
       />
       <MainVideo
         v-if="tmpNum == 7"
@@ -65,6 +72,7 @@
         :user="gameSet.gameUserOrder[tmpNum]"
         :gameIdx="tmpNum"
         @next="gameIdxUp"
+        :userEmail="gameSet.gameUserList.value[tmpNum]"
       />
       <MainVideo
         v-if="tmpNum == 8"
@@ -73,6 +81,7 @@
         :user="gameSet.gameUserOrder[tmpNum]"
         :gameIdx="tmpNum"
         @next="gameIdxUp"
+        :userEmail="gameSet.gameUserList.value[tmpNum]"
       />
       <MainVideo
         v-if="tmpNum == 9"
@@ -81,6 +90,7 @@
         :user="gameSet.gameUserOrder[tmpNum]"
         :gameIdx="tmpNum"
         @next="gameIdxUp"
+        :userEmail="gameSet.gameUserList.value[tmpNum]"
       />
       <MainVideo
         v-if="tmpNum == 10"
@@ -89,6 +99,7 @@
         :user="gameSet.gameUserOrder[tmpNum]"
         :gameIdx="tmpNum"
         @next="gameIdxUp"
+        :userEmail="gameSet.gameUserList.value[tmpNum]"
       />
       <MainVideo
         v-if="tmpNum == 11"
@@ -97,6 +108,7 @@
         :user="gameSet.gameUserOrder[tmpNum]"
         :gameIdx="tmpNum"
         @next="gameIdxUp"
+        :userEmail="gameSet.gameUserList.value[tmpNum]"
       />
     </div>
     <AllVideo
@@ -111,7 +123,8 @@
     <div v-else>제시어는 {{ gameSet.suggestion }} 입니다.</div>
   </div>
 
-  <q-dialog v-model="voteNow" persistent>
+  <VoteModal v-if="voteNow" :userList="tmpUserList" @vote="heIsLiar" />
+  <!-- <q-dialog v-model="voteNow" persistent>
     <q-card style="min-width: 350px">
       <q-card-section>
         <div v-for="(pl, idx) in tmpUserList" :key="idx">
@@ -123,7 +136,7 @@
         <div @click="voteNow = false">끝</div>
       </q-card-section>
     </q-card>
-  </q-dialog>
+  </q-dialog> -->
 
   <q-dialog v-model="liarInputNow" persistent>
     <q-card style="min-width: 350px">
@@ -157,7 +170,7 @@
 import { ref, reactive, defineProps, watchEffect } from "vue"
 import MainVideo from "./MainVideo.vue"
 import AllVideo from "./AllVideo.vue"
-
+import VoteModal from "./modal/VoteModal.vue"
 const props = defineProps({
   isSide: {
     type: Boolean,
@@ -245,7 +258,7 @@ const heIsLiar = function (suspect) {
       type: "heIsLiar",
     })
     .then(() => {
-      console.log("heIsLiar")
+      console.log("heIsLiar", suspect)
     })
     .catch((error) => {
       console.error(error)

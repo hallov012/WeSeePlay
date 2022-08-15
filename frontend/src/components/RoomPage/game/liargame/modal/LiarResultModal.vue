@@ -1,5 +1,5 @@
 <template>
-  <div class="modal modal-overlay" @mousedown.self="$emit('close')">
+  <div class="modal modal-overlay">
     <div v-if="!waiting" class="confetti">
       <div class="confetti-piece"></div>
       <div class="confetti-piece"></div>
@@ -44,7 +44,7 @@
 import { ref } from "vue"
 
 export default {
-  name: "ResultModal",
+  name: "LiarResultModal",
   props: ["whoWin", "gameSet"], // liar 찾으면 true / 아니면 false
 
   setup(props) {

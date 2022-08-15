@@ -22,7 +22,7 @@
 
 * Vue.js  
 
-* Spring Boot  
+* Spring Boot(https 적용, Restful API)  
 
 * Game Server?  
 

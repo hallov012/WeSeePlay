@@ -25,15 +25,12 @@
           <span class="timer-num">{{ time }}</span>
         </div>
       </div>
-      <div v-if="!waiting && liarWin" class="winner-box">
+      <div v-if="!waiting && !liarWin" class="winner-box">
         <div class="winner"><span>라이어</span> 승리!</div>
         <div class="video-box">대충 여기에 화면 띄워주기</div>
-        <div class="word">
-          최고의 거짓말쟁이, <span>{{ liarNickname }}</span
-          >!
-        </div>
+        <p>최고의 거짓말쟁이, {{ liarNickname }}!</p>
       </div>
-      <div v-if="!waiting && !liarWin">
+      <div v-if="!waiting && liarWin">
         <div class="winner"><span>참가자</span> 승리!</div>
         <div class="word">
           제시어: <span>{{ word }}</span>
@@ -48,12 +45,14 @@ import { ref } from "vue"
 
 export default {
   name: "LiarResultModal",
-  setup() {
+  props: ["whoWin", "gameSet"], // liar 찾으면 true / 아니면 false
+
+  setup(props) {
     const time = ref(3)
     const waiting = ref(true)
-    const liarWin = ref(false)
-    const word = ref("강낭콩")
-    const liarNickname = ref("이동준")
+    const liarWin = ref(props.whoWin)
+    const word = ref(props.gameSet.suggestion)
+    const liarNickname = ref(props.gameSet.liar)
 
     setInterval(function () {
       if (time.value > 0) {
@@ -66,7 +65,7 @@ export default {
       if (time.value == 0) {
         waiting.value = false
         // 라이어 승리시
-        liarWin.value = true
+        liarWin.value = props.whoWin
         return
       }
     }, 1000)

@@ -48,7 +48,7 @@ export default {
     setTimeout(function () {
       // socket 보내는거
       context.emit("vote", suspect.value)
-    }, 5000)
+    }, 10000)
 
     return { userInfo, check, clearCheck }
   },

@@ -1,5 +1,5 @@
 # 목차
-### [1. 서비스 소개](#1서비스-소개)              <div style="position:fixed; top:50; right:30;"><img src="/uploads/39f08ed00d7f8c704f2810d40b17a2f5/Logo.PNG" style="position:fixed; top:50; right:30; margin-left: 20px; margin-bottom: 10px; width:250px; height:250px;" alt="Logo 이미지가 없습니다."/></div>
+### [1. 서비스 소개](#1서비스-소개)
 ### [2. 기술 스택](#2기술-스택)  
 ### [3. 적용 게임 소개](#3적용-게임-소개)  
 ### [4. 프로젝트 진행](#4프로젝트-진행)  
@@ -8,7 +8,7 @@
 ## [1&nbsp;서비스 소개](#목차)  
 * ### 서비스 설명  
     + 개요  
-        * 서비스 명 : We See Play  
+        * 서비스 명 : We See Play<img src="/uploads/39f08ed00d7f8c704f2810d40b17a2f5/Logo.PNG" style="position:fixed; top:50; right:30; width:50px; height:50px;" alt="Logo 이미지가 없습니다."/>
         * 슬로건 : We See! We Play!&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="/uploads/e0b473308a3602dbbc2b445f7c714959/Slogan.PNG" height="40" alt="Slogan 이미지가 없습니다."/>  <br>
         * 더욱 커지는 비대면의 중요성을 겨냥한 서비스  
@@ -41,7 +41,7 @@
 시스템에 의해 선정된 제시어를 한명만 제외하고 모든 참여자들에게 알려줍니다.  
 그 제외된 한명은 일명 '라이어'이며 라이어는 제시어를 본 것 처럼 연기를 해야합니다.  
 돌아가면서 제시어에 대한 설명을 하며 라이어를 찾는 게임입니다.  
-<br><br>
+<br>
 * ### Call My Name  <br><br>
 <img src="/uploads/c00783fa0907c7fbaafe169b4b392bfb/call_my_name_logo.PNG" height="80" alt="Liar game 이미지가 없습니다."/>  <br><br>
 런닝맨에서 양세찬 게임으로도 불리는 Call My Name 입니다.  
@@ -57,18 +57,18 @@
 <img src="/uploads/206be6cd806f481f7386d1b11649c7b2/Notion_3.PNG" alt="Notion 이미지가 없습니다."/>  <br>
 
 ### Git Lab(Git Flow 전략)  <br><br>
-<img src="/uploads/f2f00b6c322385c67c8e97dd2a9dd376/Git_Lab.PNG" height="30" alt="Git Lab 이미지가 없습니다."/>  
+<img src="/uploads/f2f00b6c322385c67c8e97dd2a9dd376/Git_Lab.PNG" height="30" alt="Git Lab 이미지가 없습니다."/><br><br>
 <img src="/uploads/89ea8ea842fd916edbbccc84a33632db/Git_Flow.gif" height="520" alt="Git Flow 이미지가 없습니다."/><br>
 
 ### Jira  <br>
-<img src="/uploads/a8d210b715b335a9e9393a109672503a/Jira.PNG" height="30" alt="Jira 이미지가 없습니다."/>  
-<img src="/uploads/4176d072caf9b1ff28296d9f24a2382f/Jira_Backlog.PNG" alt="Jira 이미지가 없습니다."/>  
-<img src="/uploads/6c22e9c94b32e95fda3c12d3b495ed99/Jira_Burndown_chart.PNG" alt="Jira 이미지가 없습니다."/>  
+<img src="/uploads/a8d210b715b335a9e9393a109672503a/Jira.PNG" height="30" alt="Jira 이미지가 없습니다."/><br><br>
+<img src="/uploads/4176d072caf9b1ff28296d9f24a2382f/Jira_Backlog.PNG" alt="Jira 이미지가 없습니다."/><br>
+<img src="/uploads/6c22e9c94b32e95fda3c12d3b495ed99/Jira_Burndown_chart.PNG" alt="Jira 이미지가 없습니다."/><br><br>
 
 ## [5&nbsp;배포](#목차)  
 
-### Docker  <br><br>
+### Docker<br><br>
 <img src="/uploads/a87ec4bb4461359d46b124e4e048f039/docker.PNG" height="50" alt="Docker 이미지가 없습니다."/>  <br>
 
-### MSA 적용  <br><br>
+### MSA 적용<br><br>
 <img src="/uploads/e6525277761b845bb1a843dfdc76650a/MSA.PNG" alt="MSA 이미지가 없습니다."/>  

@@ -15,11 +15,12 @@ public class GameServiceImpl implements GameService {
 	@Autowired
 	LiarWordRepository liarWordRepository;
 	
+	Random rand=new Random();
+	
 	@Override
 	public String getWord(int liarGenre) {
-		Random rand = new Random();
 		List<LiarWord> words=liarWordRepository.findAllByGenreId(liarGenre);
-		if(words.size()==0) {
+		if(words.isEmpty()) {
 			return null;
 		}
 		return words.get(rand.nextInt(words.size())).getWord();

@@ -1,15 +1,8 @@
 <template>
-  <div class="video-item">
-    <div class="user-video-box">
-      <div v-if="user">
-        <ov-video :stream-manager="user" />
-      </div>
-      <div>
-        <p>gameIdx: {{ gameIdx }}</p>
-      </div>
-      <button v-if="myEmail === userEmail" @click.stop="$emit('next')">
-        NEXT {{ gameIdx }}
-      </button>
+  <div class="padding-area">
+    <div class="radius-area row">
+      <div class="name-area">{{ nickname }}</div>
+      <ov-video class="ov-area" :stream-manager="user" />
     </div>
   </div>
 </template>
@@ -31,15 +24,28 @@ const props = defineProps({
     type: String,
   },
 })
-
-const myEmail = store.getters.me.userEmail
-console.log("asdasdasdasdasdasdasdasdsa", myEmail, props.userEmail)
+const nickname = store.getters.getNickname(props.userEmail)
 </script>
 
 <style scoped>
-.user-video-box {
+.padding-area {
+  padding: 5px;
   background-color: #c9c5f1;
   border-radius: 15px;
-  width: 100%;
+}
+.radius-area {
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+.name-area {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgb(94, 144, 219);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+  padding: 2px 12px;
 }
 </style>

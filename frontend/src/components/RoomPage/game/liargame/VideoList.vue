@@ -1,11 +1,9 @@
 <template>
   <div class="row video-list-area">
-    <div>{{ gameSet.gameIdx }}, {{ tmpNum }}</div>
-    <div>
+    <div class="col-5">
       <MainVideo
         v-if="tmpNum == 0"
         class="self-center"
-        :class="isSide ? 'col-7' : 'col-5'"
         :user="gameSet.gameUserOrder[tmpNum]"
         :gameIdx="tmpNum"
         @next="gameIdxUp"
@@ -14,7 +12,6 @@
       <MainVideo
         v-if="tmpNum == 1"
         class="self-center"
-        :class="isSide ? 'col-7' : 'col-5'"
         :user="gameSet.gameUserOrder[tmpNum]"
         :gameIdx="tmpNum"
         @next="gameIdxUp"
@@ -23,7 +20,6 @@
       <MainVideo
         v-if="tmpNum == 2"
         class="self-center"
-        :class="isSide ? 'col-7' : 'col-5'"
         :user="gameSet.gameUserOrder[tmpNum]"
         :gameIdx="tmpNum"
         @next="gameIdxUp"
@@ -32,7 +28,6 @@
       <MainVideo
         v-if="tmpNum == 3"
         class="self-center"
-        :class="isSide ? 'col-7' : 'col-5'"
         :user="gameSet.gameUserOrder[tmpNum]"
         :gameIdx="tmpNum"
         @next="gameIdxUp"
@@ -41,7 +36,6 @@
       <MainVideo
         v-if="tmpNum == 4"
         class="self-center"
-        :class="isSide ? 'col-7' : 'col-5'"
         :user="gameSet.gameUserOrder[tmpNum]"
         :gameIdx="tmpNum"
         @next="gameIdxUp"
@@ -50,7 +44,6 @@
       <MainVideo
         v-if="tmpNum == 5"
         class="self-center"
-        :class="isSide ? 'col-7' : 'col-5'"
         :user="gameSet.gameUserOrder[tmpNum]"
         :gameIdx="tmpNum"
         @next="gameIdxUp"
@@ -59,7 +52,6 @@
       <MainVideo
         v-if="tmpNum == 6"
         class="self-center"
-        :class="isSide ? 'col-7' : 'col-5'"
         :user="gameSet.gameUserOrder[tmpNum]"
         :gameIdx="tmpNum"
         @next="gameIdxUp"
@@ -68,7 +60,6 @@
       <MainVideo
         v-if="tmpNum == 7"
         class="self-center"
-        :class="isSide ? 'col-7' : 'col-5'"
         :user="gameSet.gameUserOrder[tmpNum]"
         :gameIdx="tmpNum"
         @next="gameIdxUp"
@@ -77,7 +68,6 @@
       <MainVideo
         v-if="tmpNum == 8"
         class="self-center"
-        :class="isSide ? 'col-7' : 'col-5'"
         :user="gameSet.gameUserOrder[tmpNum]"
         :gameIdx="tmpNum"
         @next="gameIdxUp"
@@ -86,7 +76,6 @@
       <MainVideo
         v-if="tmpNum == 9"
         class="self-center"
-        :class="isSide ? 'col-7' : 'col-5'"
         :user="gameSet.gameUserOrder[tmpNum]"
         :gameIdx="tmpNum"
         @next="gameIdxUp"
@@ -95,7 +84,6 @@
       <MainVideo
         v-if="tmpNum == 10"
         class="self-center"
-        :class="isSide ? 'col-7' : 'col-5'"
         :user="gameSet.gameUserOrder[tmpNum]"
         :gameIdx="tmpNum"
         @next="gameIdxUp"
@@ -104,7 +92,6 @@
       <MainVideo
         v-if="tmpNum == 11"
         class="self-center"
-        :class="isSide ? 'col-7' : 'col-5'"
         :user="gameSet.gameUserOrder[tmpNum]"
         :gameIdx="tmpNum"
         @next="gameIdxUp"
@@ -116,11 +103,12 @@
       :class="isSide ? 'col-5' : 'col-7'"
       :gameUserOrder="gameSet.gameUserOrder"
       :isSide="isSide"
+      :emailData="gameSet.gameUserList"
     />
-    <!-- 일반인인지 라이어인지, 제시어 알려 주는 부분 -->
-    <!-- <div v-if="gameSet.liar == userId">당신은 라이어 입니다.</div> -->
+    <!-- 일반인인지 라이어인지, 제시어 알려 주는 부분
+    <div v-if="gameSet.liar == userId">당신은 라이어 입니다.</div>
     <div v-if="isLiar">당신은 라이어 입니다.</div>
-    <div v-else>제시어는 {{ gameSet.suggestion }} 입니다.</div>
+    <div v-else>제시어는 {{ gameSet.suggestion }} 입니다.</div> -->
   </div>
 
   <VoteModal v-if="voteNow" :userList="tmpUserList" @vote="heIsLiar" />
@@ -287,26 +275,6 @@ const liarFinalInput = function () {
   liarInput.value = ""
   liarInputNow.value = false
 }
-// const endGame = function (result) {
-//   gameSet.isGameNow = 0
-//   gameSet.gameResultModal = true
-//   result = Boolean(result)
-//   console.log(result)
-//   if (result) {
-//     if (gameSet.liar === state.myUserName) {
-//       gameSet.gameResult = "니가 졌어"
-//     } else {
-//       gameSet.gameResult = "이겼습니다."
-//     }
-//   } else {
-//     console.log("여기까지 온거 아냐?")
-//     if (gameSet.liar === state.myUserName) {
-//       gameSet.gameResult = "이겼습니다"
-//     } else {
-//       gameSet.gameResult = "니가 졌어."
-//     }
-//   }
-// }
 </script>
 
 <style scoped>

@@ -23,6 +23,9 @@
   <EditModal v-if="isEditModal" @close="editModalClose">
     <EditModalContent @close="editModalClose" />
   </EditModal>
+
+  <button @click="isLiarWaiting = true">waiting</button>
+  <LiarWaitingModal v-if="isLiarWaiting" @close="isLiarWaiting = false" />
 </template>
 
 <script setup>
@@ -33,10 +36,14 @@ import BottomBar from "@/components/RoomPage/BottomBar.vue"
 import EditModal from "@/components/RoomPage/meeting/EditModal.vue"
 import EditModalContent from "@/components/RoomPage/meeting/EditModalContent.vue"
 import TopBar from "@/components/RoomPage/game/liargame/TopBar.vue"
+//modal 임시 위치
 import { useRoute } from "vue-router"
 import { useStore } from "vuex"
 import api from "@/api/api"
 import Swal from "sweetalert2"
+/* 라이어게임 모달 */
+import LiarWaitingModal from "@/components/RoomPage/game/liargame/modal/LiarWaitingModal.vue"
+const isLiarWaiting = ref(false)
 
 // video toggle
 const isVideoOpen = ref(true)
@@ -87,9 +94,6 @@ watchEffect(() => {
 
 /* 방정보 수정 모달 */
 const isEditModal = ref(false)
-
-/* 라이어게임 모달 */
-const isLiarModal = ref(false)
 
 const editModalClose = function () {
   isEditModal.value = false

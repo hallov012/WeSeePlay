@@ -47,16 +47,7 @@
       :subscribers="state.subscribers"
     />
   </div>
-  <!-- 모달 확인용 버튼 -->
-  <button @click="isCategoryModal = true">Category</button>
-  <button @click="isVoteModal = true">Vote!</button>
-  <button @click="isLiarInputModal = true">LiarInput!</button>
-  <button @click="isLiarResultModal = true">Result!</button>
-  <button @click="isCmnInputModal = true">CmnInput!</button>
-  <button @click="isCmnResultModal = true">CmnResult!</button>
-  <CategoryModal v-if="isCategoryModal" @close="isCategoryModal = false" />
-  <VoteModal v-if="isVoteModal" @close="isVoteModal = false" />
-  <LiarInputModal v-if="isLiarInputModal" @close="isLiarInputModal = false" />
+
   <LiarResultModal
     v-if="tmpGameResultModal"
     :whoWin="tmpGameResult"
@@ -99,14 +90,6 @@ import { OpenVidu } from "openvidu-browser"
 
 $axios.defaults.headers.post["Content-Type"] = "application/json"
 $axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*"
-const router = useRouter()
-// modal control
-const isCategoryModal = ref(false)
-const isVoteModal = ref(false)
-const isLiarInputModal = ref(false)
-const isLiarResultModal = ref(false)
-const isCmnInputModal = ref(false)
-const isCmnResultModal = ref(false)
 
 // 다른 파일에서와는 다르게, 얘가 useStore임
 const usestore = useStore()
@@ -253,17 +236,7 @@ let gameSet = reactive({
   skipNum: 0,
   voteNum: 0,
 })
-// const changeGame = function () {
-//   if (isGameMode.value === 1) {
-//     isGameMode.value = 2
-//     console.log("gamemode: ", isGameMode.value)
-//     return
-//   } else {
-//     isGameMode.value = 1
-//     console.log("gamemode: ", isGameMode.value)
-//     return
-//   }
-// }
+
 function shuffle(array) {
   for (let index = array.length - 1; index > 0; index--) {
     // 무작위 index 값을 만든다. (0 이상의 배열 길이 값)
@@ -696,7 +669,9 @@ const joinSession = () => {
   })
   state.session.on("signal:liarInput", (data) => {
     tmpliarInputModal.value = gameSet.liarInputModal
-    endGame(data.data)
+    const [result, inputValue] = [...data.data.split(",")]
+    gameSet.liarInput = inputValue
+    endGame(result)
   })
   // 'getToken' method is simulating what your server-side should do.
   // 'token' parameter should be retrieved and returned by your own backend

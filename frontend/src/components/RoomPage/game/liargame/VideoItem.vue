@@ -1,7 +1,9 @@
 <template>
   <div class="padding-area">
     <div class="radius-area row">
-      <div class="name-area">{{ nickname }}</div>
+      <div :class="[talkNow ? 'talk-now' : 'non-talk']">
+        {{ nickname }}
+      </div>
       <ov-video class="ov-area" :stream-manager="user" />
     </div>
   </div>
@@ -9,7 +11,7 @@
 
 <script setup>
 import OvVideo from "./OvVideo.vue"
-import { defineProps } from "vue"
+import { defineProps, ref } from "vue"
 import store from "@/store"
 
 const props = defineProps({
@@ -23,6 +25,18 @@ const props = defineProps({
 })
 
 const nickname = store.getters.getNickname(props.userEmail)
+
+const talkNow = ref(false)
+
+if (props.user) {
+  props.user.on("publisherStartSpeaking", () => {
+    talkNow.value = true
+  })
+
+  props.user.on("publisherStopSpeaking", () => {
+    talkNow.value = false
+  })
+}
 </script>
 
 <style scoped>
@@ -37,7 +51,7 @@ const nickname = store.getters.getNickname(props.userEmail)
   position: relative;
 }
 
-.name-area {
+.talk-now {
   position: absolute;
   top: 15px;
   left: 15px;
@@ -45,5 +59,17 @@ const nickname = store.getters.getNickname(props.userEmail)
   color: rgba(255, 255, 255, 0.8);
   font-size: 14px;
   padding: 2px 10px;
+  border-radius: 5px;
+}
+
+.non-talk {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  color: rgb(0, 0, 0);
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  padding: 2px 10px;
+  border-radius: 5px;
 }
 </style>

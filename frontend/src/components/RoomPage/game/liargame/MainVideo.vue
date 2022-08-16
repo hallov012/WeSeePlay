@@ -1,15 +1,24 @@
 <template>
   <div class="padding-area">
     <div class="radius-area row">
-      <div class="name-area">{{ nickname }}</div>
+      <div :class="[talkNow ? 'talk-now' : 'non-talk']">
+        {{ nickname }}
+      </div>
       <ov-video class="ov-area" :stream-manager="user" />
+      <button
+        v-if="myEmail === userEmail"
+        @click="$emit('next')"
+        class="next-btn"
+      >
+        NEXT
+      </button>
     </div>
   </div>
 </template>
 
 <script setup>
 import store from "@/store"
-import { defineProps } from "vue"
+import { defineProps, ref } from "vue"
 import OvVideo from "./OvVideo.vue"
 
 const props = defineProps({
@@ -24,7 +33,21 @@ const props = defineProps({
     type: String,
   },
 })
+
+const myEmail = store.getters.me.userEmail
 const nickname = store.getters.getNickname(props.userEmail)
+
+const talkNow = ref(false)
+
+if (props.user) {
+  props.user.on("publisherStartSpeaking", () => {
+    talkNow.value = true
+  })
+
+  props.user.on("publisherStopSpeaking", () => {
+    talkNow.value = false
+  })
+}
 </script>
 
 <style scoped>
@@ -39,7 +62,7 @@ const nickname = store.getters.getNickname(props.userEmail)
   position: relative;
 }
 
-.name-area {
+.talk-now {
   position: absolute;
   top: 15px;
   left: 15px;
@@ -47,5 +70,27 @@ const nickname = store.getters.getNickname(props.userEmail)
   color: rgba(255, 255, 255, 0.8);
   font-size: 18px;
   padding: 2px 12px;
+  border-radius: 5px;
+}
+
+.non-talk {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  color: rgb(0, 0, 0);
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+  padding: 2px 12px;
+  border-radius: 5px;
+}
+
+.next-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 5px;
+  padding: 2px 12px;
+  z-index: 2;
+  cursor: pointer;
 }
 </style>

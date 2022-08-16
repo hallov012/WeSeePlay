@@ -139,7 +139,6 @@ const gameStart = function async() {
   gameSet.suggestion = "사자"
   shuffle(gameSet.gameUserList.value)
   gameSet.liar = pickLiar(gameSet.gameUserList.value)
-
   state.session
     .signal({
       data: gameSet.liar,
@@ -356,6 +355,8 @@ const joinSession = () => {
     gameSet.suggestion = info[1]
     gameSet.maxRound = parseInt(info[2])
     isGameMode.value = parseInt(info[0])
+    gameSet.isGameNow = true
+    store.dispatch("setGameSet", gameSet)
   })
   state.session.on("signal:whoIsLiar", (data) => {
     console.log(data.data)

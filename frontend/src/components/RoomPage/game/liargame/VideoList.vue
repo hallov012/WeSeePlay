@@ -1,6 +1,6 @@
 <template>
   <div class="row video-list-area">
-    <div class="col-5">
+    <div class="col-5 row">
       <MainVideo
         v-if="tmpNum == 0"
         class="self-center"
@@ -103,7 +103,7 @@
       :class="isSide ? 'col-5' : 'col-7'"
       :gameUserOrder="gameSet.gameUserOrder"
       :isSide="isSide"
-      :emailData="gameSet.gameUserList"
+      :emailData="gameSet.gameUserList.value"
     />
     <!-- 일반인인지 라이어인지, 제시어 알려 주는 부분
     <div v-if="gameSet.liar == userId">당신은 라이어 입니다.</div>

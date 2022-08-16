@@ -43,6 +43,7 @@
 <script setup>
 import LiarGameVideo from "./game/liargame/VideoList.vue"
 import MeetingVideo from "./meeting/VideoList.vue"
+import LiarResultModal from "./game/liargame/modal/LiarResultModal.vue"
 
 import { ref, defineProps, watchEffect } from "vue"
 import store from "@/store"

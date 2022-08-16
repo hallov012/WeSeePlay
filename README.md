@@ -18,7 +18,7 @@
 * ### 기획 배경  
 
 * ### 기능 정의서<br>
-<img src="/uploads/2c3ac210bf782001ee87d20b8ca1f61d/기능정의서.PNG" height="400" alt="기능 정의서 이미지가 없습니다."/><br>
+<img src="/uploads/dc9d70af1a196b5eb992023431dc3714/기능정의서.PNG" height="600" alt="기능 정의서 이미지가 없습니다."/><br>
 
 * ### Wire Frame<br>
 <img src="/uploads/f6fe5520516289b5082746e54e795185/wireframe.gif" height="400" alt="Wire Frame 이미지가 없습니다."/><br>

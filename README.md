@@ -1,5 +1,5 @@
 # 목차
-#### [1. 서비스 소개](#1서비스-소개)              <p align="right"><img src="/uploads/39f08ed00d7f8c704f2810d40b17a2f5/Logo.PNG" style="float: right;  margin-left: 20px; margin-bottom: 10px; width:250px; height:250px;" alt="Logo 이미지가 없습니다."/></p>  
+#### [1. 서비스 소개](#1서비스-소개)              <div style="float: right;"><img src="/uploads/39f08ed00d7f8c704f2810d40b17a2f5/Logo.PNG" style="float: right; margin-left: 20px; margin-bottom: 10px; width:250px; height:250px;" alt="Logo 이미지가 없습니다."/></div>  
 #### [2. 기술 스택](#2기술-스택)  
 #### [3. 적용 게임 소개](#3적용-게임-소개)  
 #### [4. 프로젝트 진행](#4프로젝트-진행)  

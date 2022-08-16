@@ -1,14 +1,15 @@
 # 목차
-#### [1. 서비스 소개](#1서비스-소개)              <img src="/uploads/39f08ed00d7f8c704f2810d40b17a2f5/Logo.PNG" style="float: right;  margin-left: 20px; margin-bottom: 10px; width:250px; height:250px;" alt="Logo 이미지가 없습니다."/>  
+#### [1. 서비스 소개](#1서비스-소개)              <p align="right"><img src="/uploads/39f08ed00d7f8c704f2810d40b17a2f5/Logo.PNG" style="float: right;  margin-left: 20px; margin-bottom: 10px; width:250px; height:250px;" alt="Logo 이미지가 없습니다."/></p>  
 #### [2. 기술 스택](#2기술-스택)  
 #### [3. 적용 게임 소개](#3적용-게임-소개)  
 #### [4. 프로젝트 진행](#4프로젝트-진행)  
 #### [5. 배포](#5배포)  
+
 ## [1&nbsp;서비스 소개](#목차)  
 * 서비스 설명  
     + 개요  
         * 서비스 명 : We See Play  
-        * 슬로건 : We See! We Play!
+        * 슬로건 : We See! We Play!&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="/uploads/e0b473308a3602dbbc2b445f7c714959/Slogan.PNG" height="40" alt="Slogan 이미지가 없습니다."/>  <br>
         * 더욱 커지는 비대면의 중요성을 겨냥한 서비스  
     * 타겟  
@@ -28,8 +29,8 @@
 
 * Spring Boot(https 적용, Restful API)  <br>
 <img src="/uploads/9eb7fbe3c75351b128af470b1a790bf6/Spring_logo.PNG" height="60" alt="Spring 이미지가 없습니다."/>  <br>
-<img src="/uploads/61e0df00be91dd436689679a5c98956c/Https.PNG" height="60" alt="Https 이미지가 없습니다."/>  <br>
-<img src="/uploads/e83e84f8a7f5c065a88fafedf0436a9e/Rest_API.PNG" height="120" alt="Rest API 이미지가 없습니다."/>  <br>
+<img src="/uploads/61e0df00be91dd436689679a5c98956c/Https.PNG" height="200" alt="Https 이미지가 없습니다."/>  <br>
+<img src="/uploads/e83e84f8a7f5c065a88fafedf0436a9e/Rest_API.PNG" alt="Rest API 이미지가 없습니다."/>  <br>
 
 * 추가할 것들  
 

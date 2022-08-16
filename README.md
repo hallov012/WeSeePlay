@@ -8,7 +8,7 @@
 ## [1&nbsp;서비스 소개](#목차)  
 * ### 서비스 설명  
     + 개요  
-        * 서비스 명 : We See Play &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/uploads/39f08ed00d7f8c704f2810d40b17a2f5/Logo.PNG" style="width:50; height:50;" alt="Logo 이미지가 없습니다."/>
+        * 서비스 명 : We See Play &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/uploads/39f08ed00d7f8c704f2810d40b17a2f5/Logo.PNG" height="50" alt="Logo 이미지가 없습니다."/>
         * 슬로건 : We See! We Play!&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="/uploads/e0b473308a3602dbbc2b445f7c714959/Slogan.PNG" height="40" alt="Slogan 이미지가 없습니다."/>  <br>
         * 더욱 커지는 비대면의 중요성을 겨냥한 서비스  
@@ -36,13 +36,13 @@
 * ### 추가할 것들  
 
 ## [3&nbsp;적용 게임 소개](#목차)  
-* ### 라이어 게임  <br><br>
+* ### 라이어 게임<br><br>
 <img src="/uploads/de6160ea596a35252620c3d8e9cd4a45/Liar_game_logo.PNG" height="90" alt="Liar game 이미지가 없습니다."/>  <br><br>
 시스템에 의해 선정된 제시어를 한명만 제외하고 모든 참여자들에게 알려줍니다.  
 그 제외된 한명은 일명 '라이어'이며 라이어는 제시어를 본 것 처럼 연기를 해야합니다.  
 돌아가면서 제시어에 대한 설명을 하며 라이어를 찾는 게임입니다.  
 <br>
-* ### Call My Name  <br><br>
+* ### Call My Name<br><br>
 <img src="/uploads/c00783fa0907c7fbaafe169b4b392bfb/call_my_name_logo.PNG" height="80" alt="Liar game 이미지가 없습니다."/>  <br><br>
 런닝맨에서 양세찬 게임으로도 불리는 Call My Name 입니다.  
 모든 참가자들은 각각 특정 이름을 부여받지만 자신을 제외한 참가자들만 해당 이름을 확인 할 수 있습니다.  

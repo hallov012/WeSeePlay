@@ -25,13 +25,12 @@
 * ### 서비스 화면  
 
 ## [2&nbsp;기술 스택](#목차)  
-* ### Openvidu  <br>
-<img src="/uploads/85ed6aeebb1d9d7b6e2b0043a3dc8647/OpenVidu.PNG" height="60" alt="OpenVidu 이미지가 없습니다."/>  <br>
+* ### Openvidu &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/uploads/85ed6aeebb1d9d7b6e2b0043a3dc8647/OpenVidu.PNG" height="40" alt="OpenVidu 이미지가 없습니다."/>  <br>
 
-* ### Vue.js<br><br>
+* ### Vue.js &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white">  <br>
 
-* ### Spring Boot(https 적용, Restful API)<br><br>
+* ### Spring Boot(https 적용, Restful API) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">  <br>
 <img src="/uploads/61e0df00be91dd436689679a5c98956c/Https.PNG" height="150" alt="Https 이미지가 없습니다."/>  <br>
 <img src="/uploads/e83e84f8a7f5c065a88fafedf0436a9e/Rest_API.PNG" height="450" alt="Rest API 이미지가 없습니다."/>  <br>
@@ -55,24 +54,24 @@
 
 ## [4&nbsp;프로젝트 진행](#목차)  
 데일리 스크럼을 진행하며 매번 회의를 Notion에 기록하고 Git Lab에 Git Flow 전략을 차용하여 코드를 관리하였으며 Jira를 이용하여 팀원들의 할 일과 일정을 조절하였습니다.  <br>
-### Notion  <br>
+### Notion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white"><br>
 <img src="/uploads/ba611d2e411bfcce780204f31a336532/Notion_1.PNG" alt="Notion 이미지가 없습니다."/>  
 <img src="/uploads/c3683a76b8de0457f8edd93eb79ea948/Notion_2.PNG" alt="Notion 이미지가 없습니다."/>  
 <img src="/uploads/206be6cd806f481f7386d1b11649c7b2/Notion_3.PNG" alt="Notion 이미지가 없습니다."/>  <br>
 
-### Git Lab(Git Flow 전략)  <br><br>
+### Git Lab(Git Flow 전략) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="https://img.shields.io/badge/gitlab-FC6D26?style=for-the-badge&logo=GitLab&logoColor=white"><br><br>
 <img src="/uploads/89ea8ea842fd916edbbccc84a33632db/Git_Flow.gif" height="520" alt="Git Flow 이미지가 없습니다."/><br>
 
-### Jira  <br>
+### Jira &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=Jira&logoColor=white"><br>
 <img src="/uploads/4176d072caf9b1ff28296d9f24a2382f/Jira_Backlog.PNG" alt="Jira 이미지가 없습니다."/><br>
 <img src="/uploads/6c22e9c94b32e95fda3c12d3b495ed99/Jira_Burndown_chart.PNG" alt="Jira 이미지가 없습니다."/><br><br>
 
 ## [5&nbsp;배포](#목차)  
 
-### Docker<br><br>
+### Docker &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white"><br>
 
 ### MSA 적용<br><br>

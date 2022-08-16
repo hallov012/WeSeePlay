@@ -7,7 +7,7 @@
     </p>
   </div>
   <div class="user-input">
-    <span>계정 삭제에 동의합니다.</span>
+    <p class="confirm-text">계정 삭제에 동의합니다.</p>
     <input
       type="text"
       v-model="confirmationText"

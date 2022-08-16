@@ -1,5 +1,5 @@
 # 목차
-### [1. 서비스 소개](#1서비스-소개)              <div style="float: right;"><img src="/uploads/39f08ed00d7f8c704f2810d40b17a2f5/Logo.PNG" style="float: right; margin-left: 20px; margin-bottom: 10px; width:250px; height:250px;" alt="Logo 이미지가 없습니다."/></div>  
+### [1. 서비스 소개](#1서비스-소개)              <img src="/uploads/39f08ed00d7f8c704f2810d40b17a2f5/Logo.PNG" style="position:fixed; top:50; right:30; margin-left: 20px; margin-bottom: 10px; width:250px; height:250px;" alt="Logo 이미지가 없습니다."/>
 ### [2. 기술 스택](#2기술-스택)  
 ### [3. 적용 게임 소개](#3적용-게임-소개)  
 ### [4. 프로젝트 진행](#4프로젝트-진행)  
@@ -29,8 +29,8 @@
 
 * ### Spring Boot(https 적용, Restful API)  <br>
 <img src="/uploads/9eb7fbe3c75351b128af470b1a790bf6/Spring_logo.PNG" height="60" alt="Spring 이미지가 없습니다."/>  <br>
-<img src="/uploads/61e0df00be91dd436689679a5c98956c/Https.PNG" height="170" alt="Https 이미지가 없습니다."/>  <br>
-<img src="/uploads/e83e84f8a7f5c065a88fafedf0436a9e/Rest_API.PNG" height="500" alt="Rest API 이미지가 없습니다."/>  <br>
+<img src="/uploads/61e0df00be91dd436689679a5c98956c/Https.PNG" height="150" alt="Https 이미지가 없습니다."/>  <br>
+<img src="/uploads/e83e84f8a7f5c065a88fafedf0436a9e/Rest_API.PNG" height="450" alt="Rest API 이미지가 없습니다."/>  <br>
 
 * ### 추가할 것들  
 
@@ -59,7 +59,7 @@
 
 ### Git Lab(Git Flow 전략)  <br><br>
 <img src="/uploads/f2f00b6c322385c67c8e97dd2a9dd376/Git_Lab.PNG" height="30" alt="Git Lab 이미지가 없습니다."/>  
-<img src="/uploads/89ea8ea842fd916edbbccc84a33632db/Git_Flow.gif" height="500" alt="Git Flow 이미지가 없습니다."/>  
+<img src="/uploads/89ea8ea842fd916edbbccc84a33632db/Git_Flow.gif" height="520" alt="Git Flow 이미지가 없습니다."/>  <br>
 ### Jira  <br>
 <img src="/uploads/a8d210b715b335a9e9393a109672503a/Jira.PNG" height="30" alt="Jira 이미지가 없습니다."/>  
 <img src="/uploads/4176d072caf9b1ff28296d9f24a2382f/Jira_Backlog.PNG" alt="Jira 이미지가 없습니다."/>  

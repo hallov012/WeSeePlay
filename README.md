@@ -17,6 +17,11 @@
         * 프로젝트로 새롭게 만난 팀원들  <br><br>
 * ### 기획 배경  
 
+* ### 기능 정의서<br>
+<img src="/uploads/2c3ac210bf782001ee87d20b8ca1f61d/기능정의서.PNG" height="400" alt="기능 정의서 이미지가 없습니다."/><br>
+
+* ### Wire Frame<br>
+<img src="/uploads/f6fe5520516289b5082746e54e795185/wireframe.gif" height="400" alt="Wire Frame 이미지가 없습니다."/><br>
 * ### 서비스 화면  
 
 ## [2&nbsp;기술 스택](#목차)  

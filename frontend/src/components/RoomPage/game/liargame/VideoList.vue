@@ -112,32 +112,8 @@
   </div>
 
   <VoteModal v-if="voteNow" :userList="tmpUserList" @vote="heIsLiar" />
-  <!-- <q-dialog v-model="voteNow" persistent>
-    <q-card style="min-width: 350px">
-      <q-card-section>
-        <div v-for="(pl, idx) in tmpUserList" :key="idx">
-          <p @click="heIsLiar(pl)">
-            {{ pl }}
-          </p>
-        </div>
-        <div @click="heIsLiar('skip')">skip</div>
-        <div @click="voteNow = false">끝</div>
-      </q-card-section>
-    </q-card>
-  </q-dialog> -->
 
-  <q-dialog v-model="liarInputNow" persistent>
-    <q-card style="min-width: 350px">
-      <q-card-section>
-        <div>
-          <input type="text" v-model="liarInput" />
-          <button @click="liarFinalInput()">입력하</button>
-        </div>
-
-        <div @click="liarInputNow = false">끝</div>
-      </q-card-section>
-    </q-card>
-  </q-dialog>
+  <liarInputModal v-if="liarInputNow" @answer="liarFinalInput" />
 
   <q-dialog v-model="gameResultModal" persistent>
     <q-card style="min-width: 350px">
@@ -159,6 +135,8 @@ import { ref, reactive, defineProps, watchEffect } from "vue"
 import MainVideo from "./MainVideo.vue"
 import AllVideo from "./AllVideo.vue"
 import VoteModal from "./modal/VoteModal.vue"
+import liarInputModal from "./modal/LiarInputModal.vue"
+
 const props = defineProps({
   isSide: {
     type: Boolean,
@@ -203,7 +181,7 @@ const voteNow = ref(false)
 const liarInputNow = ref(false)
 const gameResultModal = ref(false)
 const tmpGameResult = ref("")
-const liarInput = ref("")
+
 watchEffect(() => {
   console.log(gameSet.gameIdx)
   if (!liarInputNow.value) {
@@ -252,17 +230,17 @@ const heIsLiar = function (suspect) {
       console.error(error)
     })
 }
-const liarFinalInput = function () {
+const liarFinalInput = function (inputValue) {
   liarInputNow.value = false
   let result = true
-  if (liarInput.value == gameSet.suggestion) {
+  if (inputValue == gameSet.suggestion) {
     console.log("정답이다 멍청아")
     result = false
   }
   console.log(result)
   props.session
     .signal({
-      data: result,
+      data: `${result},${inputValue}`,
       to: [],
       type: "liarInput",
     })
@@ -272,7 +250,6 @@ const liarFinalInput = function () {
     .catch((error) => {
       console.error(error)
     })
-  liarInput.value = ""
   liarInputNow.value = false
 }
 </script>

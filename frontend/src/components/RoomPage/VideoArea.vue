@@ -467,7 +467,9 @@ const joinSession = () => {
   })
   state.session.on("signal:liarInput", (data) => {
     tmpliarInputModal.value = gameSet.liarInputModal
-    endGame(data.data)
+    const [result, inputValue] = [...data.data.split(",")]
+    gameSet.liarInput = inputValue
+    endGame(result)
   })
   // 'getToken' method is simulating what your server-side should do.
   // 'token' parameter should be retrieved and returned by your own backend

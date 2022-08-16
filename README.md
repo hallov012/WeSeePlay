@@ -1,12 +1,12 @@
 # 목차
-#### [1. 서비스 소개](#1서비스-소개)              <div style="float: right;"><img src="/uploads/39f08ed00d7f8c704f2810d40b17a2f5/Logo.PNG" style="float: right; margin-left: 20px; margin-bottom: 10px; width:250px; height:250px;" alt="Logo 이미지가 없습니다."/></div>  
-#### [2. 기술 스택](#2기술-스택)  
-#### [3. 적용 게임 소개](#3적용-게임-소개)  
-#### [4. 프로젝트 진행](#4프로젝트-진행)  
-#### [5. 배포](#5배포)  
+### [1. 서비스 소개](#1서비스-소개)              <div style="float: right;"><img src="/uploads/39f08ed00d7f8c704f2810d40b17a2f5/Logo.PNG" style="float: right; margin-left: 20px; margin-bottom: 10px; width:250px; height:250px;" alt="Logo 이미지가 없습니다."/></div>  
+### [2. 기술 스택](#2기술-스택)  
+### [3. 적용 게임 소개](#3적용-게임-소개)  
+### [4. 프로젝트 진행](#4프로젝트-진행)  
+### [5. 배포](#5배포)  
 
 ## [1&nbsp;서비스 소개](#목차)  
-* 서비스 설명  
+* ### 서비스 설명  
     + 개요  
         * 서비스 명 : We See Play  
         * 슬로건 : We See! We Play!&nbsp;&nbsp;&nbsp;&nbsp;
@@ -16,9 +16,9 @@
         * 사정상(전염병 유행, 거리 문제 등) 만나지 못하는 친구들  
         * 프로젝트로 새롭게 만난 팀원들  
               
-* 기획 배경  
+* ### 기획 배경  
 
-* 서비스 화면  
+* ### 서비스 화면  
 
 ## [2&nbsp;기술 스택](#목차)  
 * Openvidu  <br>

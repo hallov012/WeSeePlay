@@ -5,15 +5,10 @@
       <div id="user-vote-box">
         <div v-for="(user, key) in userInfo" :key="key" class="user-item">
           <div class="name-box">
-            <span class="nickname-text">{{ user.userNickname }}</span>
+            <span class="nickname-text">{{ user }}</span>
             <span class="order-text">발표자 {{ key + 1 }}</span>
           </div>
-          <input
-            @click="check($event)"
-            class="check-box"
-            type="checkbox"
-            :value="user.userEmail"
-          />
+          <input @click="check(user)" class="check-box" type="checkbox" />
         </div>
       </div>
       <button class="skip-btn" @click="clearCheck">skip</button>
@@ -30,26 +25,13 @@ import { ref } from "vue"
 export default {
   name: "VoteModal",
   emits: ["close"],
-  props: [],
+  props: ["userList"],
   setup(props, context) {
     const suspect = ref("")
 
-    let userInfo = [
-      { userEmail: "aaa@aaa", userId: 1, userNickname: "에이에이" },
-      { userEmail: "bbb@bbb", userId: 2, userNickname: "비비비비" },
-      { userEmail: "ccc@ccc", userId: 3, userNickname: "씨씨씨씨" },
-      { userEmail: "aaa@aaa", userId: 1, userNickname: "에이에이" },
-      { userEmail: "bbb@bbb", userId: 2, userNickname: "비비비비" },
-      { userEmail: "ccc@ccc", userId: 3, userNickname: "씨씨씨씨" },
-      { userEmail: "aaa@aaa", userId: 1, userNickname: "에이에이" },
-      { userEmail: "bbb@bbb", userId: 2, userNickname: "비비비비" },
-      { userEmail: "ccc@ccc", userId: 3, userNickname: "씨씨씨씨" },
-      { userEmail: "aaa@aaa", userId: 1, userNickname: "에이에이" },
-      { userEmail: "bbb@bbb", userId: 2, userNickname: "비비비비" },
-      { userEmail: "ccc@ccc", userId: 3, userNickname: "씨씨씨씨" },
-    ]
+    let userInfo = [...props.userList]
 
-    const check = function (event) {
+    const check = function (user) {
       const checkboxes = document.querySelectorAll(".check-box")
       const skipBtn = document.querySelector(".skip-btn")
       checkboxes.forEach((cb) => {
@@ -57,7 +39,7 @@ export default {
       })
       skipBtn.classList.remove("active")
       event.target.checked = true
-      suspect.value = event.target.value
+      suspect.value = user
     }
 
     const clearCheck = function () {
@@ -72,7 +54,7 @@ export default {
 
     setTimeout(function () {
       // socket 보내는거
-      context.emit("close")
+      context.emit("vote", suspect.value)
     }, 10000)
 
     return { userInfo, check, clearCheck }

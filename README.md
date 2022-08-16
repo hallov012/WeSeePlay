@@ -8,7 +8,7 @@
 * 서비스 설명  
     + 개요  
         * 서비스 명 : We See Play 
-![Logo](/uploads/39f08ed00d7f8c704f2810d40b17a2f5/Logo.PNG){: height="50"}
+![Logo](/uploads/39f08ed00d7f8c704f2810d40b17a2f5/Logo.PNG){: width="50" height="50"}
         * 슬로건 : We See! We Play!
 ![Slogan](/uploads/e0b473308a3602dbbc2b445f7c714959/Slogan.PNG){: height="30"}
         * 더욱 커지는 비대면의 중요성을 겨냥한 서비스  

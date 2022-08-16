@@ -1,5 +1,5 @@
 # 목차
-#### [1. 서비스 소개](#1서비스-소개)  
+#### [1. 서비스 소개](#1서비스-소개)              <img src="/uploads/39f08ed00d7f8c704f2810d40b17a2f5/Logo.PNG" style="float: right;  margin-left: 20px; margin-bottom: 10px; width:250px; height:250px;" alt="Logo 이미지가 없습니다."/>  
 #### [2. 기술 스택](#2기술-스택)  
 #### [3. 적용 게임 소개](#3적용-게임-소개)  
 #### [4. 프로젝트 진행](#4프로젝트-진행)  
@@ -7,7 +7,7 @@
 ## [1&nbsp;서비스 소개](#목차)  
 * 서비스 설명  
     + 개요  
-        * 서비스 명 : We See Play <img src="/uploads/39f08ed00d7f8c704f2810d40b17a2f5/Logo.PNG" width="30" height="30" alt="Logo 이미지가 없습니다."/>  
+        * 서비스 명 : We See Play  
         * 슬로건 : We See! We Play!
 <img src="/uploads/e0b473308a3602dbbc2b445f7c714959/Slogan.PNG" height="40" alt="Slogan 이미지가 없습니다."/>  <br>
         * 더욱 커지는 비대면의 중요성을 겨냥한 서비스  

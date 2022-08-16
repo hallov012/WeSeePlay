@@ -1,5 +1,5 @@
 # 목차
-### [1. 서비스 소개](#1서비스-소개)              <img src="/uploads/39f08ed00d7f8c704f2810d40b17a2f5/Logo.PNG" style="position:fixed; top:50; right:30; margin-left: 20px; margin-bottom: 10px; width:250px; height:250px;" alt="Logo 이미지가 없습니다."/>
+### [1. 서비스 소개](#1서비스-소개)              <div style="position:fixed; top:50; right:30;"><img src="/uploads/39f08ed00d7f8c704f2810d40b17a2f5/Logo.PNG" style="position:fixed; top:50; right:30; margin-left: 20px; margin-bottom: 10px; width:250px; height:250px;" alt="Logo 이미지가 없습니다."/></div>
 ### [2. 기술 스택](#2기술-스택)  
 ### [3. 적용 게임 소개](#3적용-게임-소개)  
 ### [4. 프로젝트 진행](#4프로젝트-진행)  
@@ -14,8 +14,7 @@
         * 더욱 커지는 비대면의 중요성을 겨냥한 서비스  
     * 타겟  
         * 사정상(전염병 유행, 거리 문제 등) 만나지 못하는 친구들  
-        * 프로젝트로 새롭게 만난 팀원들  
-              
+        * 프로젝트로 새롭게 만난 팀원들  <br><br>
 * ### 기획 배경  
 
 * ### 서비스 화면  
@@ -59,7 +58,8 @@
 
 ### Git Lab(Git Flow 전략)  <br><br>
 <img src="/uploads/f2f00b6c322385c67c8e97dd2a9dd376/Git_Lab.PNG" height="30" alt="Git Lab 이미지가 없습니다."/>  
-<img src="/uploads/89ea8ea842fd916edbbccc84a33632db/Git_Flow.gif" height="520" alt="Git Flow 이미지가 없습니다."/>  <br>
+<img src="/uploads/89ea8ea842fd916edbbccc84a33632db/Git_Flow.gif" height="520" alt="Git Flow 이미지가 없습니다."/><br>
+
 ### Jira  <br>
 <img src="/uploads/a8d210b715b335a9e9393a109672503a/Jira.PNG" height="30" alt="Jira 이미지가 없습니다."/>  
 <img src="/uploads/4176d072caf9b1ff28296d9f24a2382f/Jira_Backlog.PNG" alt="Jira 이미지가 없습니다."/>  

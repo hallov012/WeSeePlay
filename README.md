@@ -8,7 +8,7 @@
 ## [1&nbsp;서비스 소개](#목차)  
 * ### 서비스 설명  
     + 개요  
-        * 서비스 명 : We See Play<img src="/uploads/39f08ed00d7f8c704f2810d40b17a2f5/Logo.PNG" style="position:fixed; top:50; right:30; width:50px; height:50px;" alt="Logo 이미지가 없습니다."/>
+        * 서비스 명 : We See Play &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/uploads/39f08ed00d7f8c704f2810d40b17a2f5/Logo.PNG" style="width:50; height:50;" alt="Logo 이미지가 없습니다."/>
         * 슬로건 : We See! We Play!&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="/uploads/e0b473308a3602dbbc2b445f7c714959/Slogan.PNG" height="40" alt="Slogan 이미지가 없습니다."/>  <br>
         * 더욱 커지는 비대면의 중요성을 겨냥한 서비스  

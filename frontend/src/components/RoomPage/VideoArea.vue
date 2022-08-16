@@ -4,11 +4,27 @@
     <button
       v-if="isGameMode === 1"
       style="position: absolute; top: 1rem"
-      @click="gameStart"
+      @click="callmyNameGameStart"
+    >
+      이건 왜 안떠요Game On/Off 이게 콜마네
+    </button>
+    <!-- 이 버튼 어차피 나중에 날릴 것이므로 -->
+    <button
+      v-if="isGameMode === 1"
+      style="position: absolute; top: 1rem"
+      @click="selectingCategory = true"
     >
       Game On/Off
     </button>
+
     <!-- isGameMode가 참이면 GameVideo가 나오게 하고, false라면 MeetingVideo가 나오게 짰어-->
+    <CallMyNameVideo
+      v-if="isGameMode === 3"
+      :setting="callMyNamegameSet"
+      :session="state.session"
+      :gameIdx="callMyNameGameIdx"
+      :coolDown="callMyNameCoolDown"
+    />
     <LiarGameVideo
       v-if="isGameMode === 2"
       :isSide="isSide"
@@ -32,21 +48,45 @@
     />
   </div>
 
+  <CategoryModal
+    v-if="selectingCategory"
+    @close="selectingCategory = false"
+    @liarGameStart="gameStart"
+  />
+  <LiarWaitingModal
+    v-if="isLiarWaiting"
+    :liar="gameSet.liar"
+    @close="isLiarWaiting = false"
+  />
+
   <LiarResultModal
     v-if="tmpGameResultModal"
     :whoWin="tmpGameResult"
     :gameSet="gameSet"
     @close="tmpGameResultModal = false"
   />
+
+  <CallmynameResultModal
+    v-if="callMyNamegameSet.gameResultModal"
+    @close="callMyNamegameSet.gameResultModal = false"
+    :winner="callMyNameGameResultWinner"
+    :isWin="callMyNameGameResult"
+    :suggestion="callMyNameMyName"
+  />
 </template>
 
 <script setup>
+import CallMyNameVideo from "./game/callmyname/VideoList.vue"
 import LiarGameVideo from "./game/liargame/VideoList.vue"
 import MeetingVideo from "./meeting/VideoList.vue"
-import LiarResultModal from "./game/liargame/modal/LiarResultModal.vue"
+import CategoryModal from "@/components/RoomPage/game/liargame/modal/CategoryModal.vue"
+import LiarWaitingModal from "@/components/RoomPage/game/liargame/modal/LiarWaitingModal.vue"
+import LiarResultModal from "@/components/RoomPage/game/liargame/modal/LiarResultModal.vue"
+import CallmynameResultModal from "@/components/RoomPage/game/callmyname/modal/CallmynameResultModal.vue"
 
 import { ref, defineProps, watchEffect } from "vue"
 import store from "@/store"
+import { useRouter } from "vue-router"
 import { useStore } from "vuex"
 import api from "@/api/api"
 import axios from "axios"
@@ -65,7 +105,7 @@ $axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*"
 const usestore = useStore()
 
 const isGameMode = ref(store.getters.getRoomInfo.game)
-
+const router = useRouter()
 const initSetting = function () {
   gameSet = reactive({
     gameIdx: 0,
@@ -87,10 +127,109 @@ const initSetting = function () {
     voteNum: 0,
   })
 }
+//////////////////////////////////////////////////
+const callMyNameGameIdx = ref(0)
+const callMyNameCoolDown = ref(3)
+const callMyNameMyName = ref("")
+const callMyNameGameResultWinner = ref("")
+const callMyNameGameResult = ref(false)
+let callMyNamegameSet = reactive({
+  isGameNow: 0,
+  suggestion: [],
+  maxRound: 0,
+  targetPlayer: [],
+  nontargetPlayer: [],
+  passedTurn: 0,
+  passedRound: 0,
+  gameUserOrder: [],
+  gameResultModal: false,
+  userList: [],
+})
+// const callMyNameInitSetting = function () {
+//   callMyNameGameIdx = ref(0)
+//   callMyNameMyName = ref("")
+//   callMyNameCoolDown = ref(3)
+//   callMyNamegameSet = reactive({
+//     isGameNow: 0,
+//     suggestion: [],
+//     maxRound: 0,
+//     targetPlayer: [],
+//     nontargetPlayer: [],
+//     passedTurn: 0,
+//     passedRound: 0,
+//     gameUserOrder: [],
+//     gameResult: false,
+//     gameResultWinner: "",
+//     gameResultModal: false,
+//     userList: [],
+//   })
+// }
+const callmyNameGameStart = async function () {
+  await api.room.editRoom(state.mySessionId, { game: 3 })
+  callMyNameCoolDown.value = 3
+  callMyNameGameIdx.value = 0
+  callMyNamegameSet.userList = []
+  callMyNamegameSet.targetPlayer = []
+  callMyNamegameSet.nontargetPlayer = []
+  callMyNamegameSet.gameUserOrder = []
+
+  state.subscribers.forEach(function (element) {
+    callMyNamegameSet.userList.push(
+      JSON.parse(element.stream.connection.data).clientData
+    )
+    // gameSet.gameUserOrder.push(element)
+  })
+  callMyNamegameSet.userList.push(state.myUserName)
+  callMyNamegameSet.maxRound = 5
+  callMyNamegameSet.suggestion = ["아이유", "산타클로스", "뽀로로"]
+  shuffle(callMyNamegameSet.userList)
+
+  state.session
+    .signal({
+      data: callMyNamegameSet.suggestion.join(),
+      to: [],
+      type: "callMyNamegameSuggestion",
+    })
+    .then(() => {
+      console.log("callMyNamegameSuggestion")
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+
+  state.session
+    .signal({
+      data: callMyNamegameSet.userList.join(),
+      to: [],
+      type: "callMyNamegameOrder",
+    })
+    .then(() => {
+      console.log("callMyNamegameOrder")
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+
+  state.session
+    .signal({
+      data: "3," + String(callMyNamegameSet.maxRound),
+      to: [],
+      type: "callMyNamegameStart",
+    })
+    .then(() => {
+      console.log("callMyNamegame Start!")
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+}
+//////////////////////////////////////////////////
 watchEffect(() => {
   isGameMode.value = store.getters.getRoomInfo.game
 })
 // 게임 정보
+const isLiarWaiting = ref(false)
+const selectingCategory = ref(false)
 let gameSet = reactive({
   gameIdx: 0,
   isGameNow: 0,
@@ -126,7 +265,8 @@ function pickLiar(array) {
   const randomPosition = Math.floor(Math.random() * array.length)
   return array[randomPosition]
 }
-const gameStart = function async() {
+const gameStart = async function () {
+  await api.room.editRoom(state.mySessionId, { game: 2 })
   gameSet.gameUserOrder = [] // 초기화
   gameSet.gameUserList.value = []
   state.subscribers.forEach(function (element) {
@@ -225,6 +365,7 @@ const state = reactive({
 })
 
 // toggle
+const hostEmail = ref(store.getters.getRoomInfo.hostEmail)
 watchEffect(() => {
   if (state.publisher) {
     state.publisher.publishVideo(props.isVideoOpen)
@@ -232,6 +373,7 @@ watchEffect(() => {
   if (state.publisher) {
     state.publisher.publishAudio(props.isAudeoOpen)
   }
+  hostEmail.value = store.getters.getRoomInfo.hostEmail
 })
 // const toggleAudio = () => {
 //   vidoman.publishAudio = !vidoman.publishAudio
@@ -242,12 +384,9 @@ watchEffect(() => {
 //   }
 // }
 const endGame = async function (result) {
-  console.log("게임좀 끝내줘 멍청아")
-
+  await api.room.editRoom(state.mySessionId, { game: 1 })
   result = Boolean(result)
-  console.log(`%c누가이겼냐 ${result}`, "color: white;background: red")
   tmpGameResult.value = result
-
   tmpGameResultModal.value = true
   // if (result) {
   //   if (gameSet.liar === state.myUserName) {
@@ -345,6 +484,81 @@ const joinSession = () => {
   // On every asynchronous exception...
   state.session.on("exception", ({ exception }) => {
     console.warn(exception)
+  })
+  state.session.on("signal:get out of this room!", (data) => {
+    console.log(data.data)
+    if (state.myUserName !== data.data) {
+      leaveSession()
+      router.push({ name: "mainpage" })
+    }
+  })
+  //call my name game
+  state.session.on("signal:callMyNamegameStart", (data) => {
+    let info = data.data.split(",")
+    isGameMode.value = parseInt(info[0])
+    callMyNameGameIdx.value = 0
+    callMyNameCoolDown.value = 3
+    callMyNamegameSet.maxRound = parseInt(info[1])
+  })
+  state.session.on("signal:callMyNamegameSuggestion", (data) => {
+    console.log(data.data)
+    callMyNamegameSet.suggestion = data.data.split(",")
+  })
+  state.session.on("signal:callMyNamegameOrder", (data) => {
+    console.log(data.data)
+    callMyNamegameSet.userList = data.data.split(",")
+    callMyNamegameSet.targetPlayer = callMyNamegameSet.userList.slice(0, 3)
+    callMyNamegameSet.nontargetPlayer = callMyNamegameSet.userList.slice(3)
+    callMyNamegameSet.gameUserOrder = []
+    for (let p = 0; p < callMyNamegameSet.userList.length; p++) {
+      let flag = 0
+      state.subscribers.forEach(function (element) {
+        if (
+          callMyNamegameSet.targetPlayer[p] ===
+          JSON.parse(element.stream.connection.data).clientData
+        ) {
+          callMyNamegameSet.gameUserOrder.push(element)
+          flag = 1
+        }
+      })
+      if (!flag) {
+        callMyNamegameSet.gameUserOrder.push(state.publisher)
+      }
+    }
+  })
+  state.session.on("signal:Call my name, idx up", (data) => {
+    console.log(data.data)
+    callMyNameGameIdx.value += 1
+    if (callMyNameGameIdx.value >= 3) {
+      callMyNameGameIdx.value = 0
+      callMyNamegameSet.passedRound += 1
+    }
+    callMyNamegameSet.passedTurn += 1
+    callMyNameCoolDown.value -= 1
+    // 모든 사용자 gameidx증가
+  })
+  state.session.on("signal:callMynameChooseCorrect", async (info) => {
+    let data = parseInt(info.data)
+    if (!data) {
+      callMyNameGameResultWinner.value = callMyNamegameSet.userList[0]
+    } else {
+      callMyNameGameResultWinner.value = callMyNamegameSet.userList[data]
+    }
+    for (let i = 0; i < 3; i++) {
+      if (callMyNamegameSet.userList[i] === state.myUserName) {
+        callMyNameMyName.value = callMyNamegameSet.suggestion[i]
+      }
+    }
+
+    if (state.myUserName === callMyNameGameResultWinner.value) {
+      callMyNameGameResult.value = true
+      await api.room.editRoom(state.mySessionId, { game: 1 })
+    }
+    callMyNamegameSet.gameResultModal = true
+    isGameMode.value = 1
+  })
+  state.session.on("signal:callMynamechooseIncorrect", (data) => {
+    console.log("잘못된 값을 적었다~", data.data)
   })
 
   // liar Game
@@ -451,6 +665,8 @@ const joinSession = () => {
             gameSet.liarInputModal = true
             tmpliarInputModal.value = gameSet.liarInputModal
             gameSet.liarInputModal = false
+          } else {
+            isLiarWaiting.value = true
           }
         } else {
           isEnd = true
@@ -469,7 +685,7 @@ const joinSession = () => {
     tmpliarInputModal.value = gameSet.liarInputModal
     const [result, inputValue] = [...data.data.split(",")]
     gameSet.liarInput = inputValue
-    console.log(data.data)
+    isLiarWaiting.value = false
     endGame(result)
   })
   // 'getToken' method is simulating what your server-side should do.
@@ -508,6 +724,25 @@ const joinSession = () => {
 }
 const leaveSession = () => {
   // --- Leave the session by calling 'disconnect' method over the Session object ---
+  console.log(
+    "야야야야야야야야야야야야야야야야",
+    state.myUserName,
+    hostEmail.value
+  )
+  if (state.myUserName === hostEmail.value) {
+    state.session
+      .signal({
+        data: hostEmail.value,
+        to: [],
+        type: "get out of this room!",
+      })
+      .then(() => {
+        console.log("get out of this room!")
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }
   if (state.session) state.session.disconnect()
 
   state.session = undefined

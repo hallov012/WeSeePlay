@@ -76,7 +76,7 @@ Dev Branch에서 통합 테스트를 하고 Main Branch는 문제 없이 최종�
 매주 초에 회의를 통해 각자 일주일 동안 진행할 내용을 정하고 하루 Story Point 8을 기준으로 Backlog에 Issue를 생성하였습니다.<br>
 크게 Epic(기획, 개발, 학습 등)으로 분류했고 명명 규칙(FE : 개발 > ErrorPage > CSS 등)을 정하여 어떤 작업을 하는지 쉽게 이해할 수 있도록 했습니다.
 <br><br>
-<img src="/uploads/4176d072caf9b1ff28296d9f24a2382f/Jira_Backlog.PNG" alt="Jira 이미지가 없습니다."/><br>
+<img src="/uploads/398468719ebc7b698a276c6e6c462260/Jira_Backlog.PNG" alt="Jira 이미지가 없습니다."/><br><br>
 처음 적용 하다보니 작업에 대한 시간을 정확하게 할당하지 못하여 미숙한 부분이 많았지만 Burndown Chart는 우하향 그래프를 그리고 있습니다.<br><br>
 <img src="/uploads/6c22e9c94b32e95fda3c12d3b495ed99/Jira_Burndown_chart.PNG" alt="Jira 이미지가 없습니다."/><br><br>
 

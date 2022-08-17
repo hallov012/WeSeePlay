@@ -53,20 +53,31 @@
 서로 질문을 하며 자신의 이름을 맞추는 방식입니다.  
 
 ## [4&nbsp;프로젝트 진행](#목차)  
-데일리 스크럼을 진행하며 매번 회의를 Notion에 기록하고 Git Lab에 Git Flow 전략을 차용하여 코드를 관리하였으며 Jira를 이용하여 팀원들의 할 일과 일정을 조절하였습니다.  <br>
-### Notion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+데일리 스크럼을 진행하며 매번 회의를 Notion에 기록하고 Git Lab에 Git Flow 전략을 적용하여 코드를 관리하였으며 Jira를 이용하여 팀원들의 할 일과 일정을 조절하였습니다.  <br>
+### Notion
 <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white"><br>
-<img src="/uploads/ba611d2e411bfcce780204f31a336532/Notion_1.PNG" alt="Notion 이미지가 없습니다."/>  
+팀장님의 주도하에 Daily Scrum을 진행하였고 회의 내용을 비롯하여 API 설계, WireFrame, ERD 등 필요한 자료들을 한눈에 확인할 수 있도록 정리하였습니다.<br>
+깔끔하게 정리함으로써 지난 회의 내용이나 필요한 자료를 찾는 수고를 덜 수 있었고 원만한 협업의 원동력이 되었습니다.
+<br><br>
+<img src="/uploads/ba611d2e411bfcce780204f31a336532/Notion_1.PNG" alt="Notion 이미지가 없습니다."/><br>
 <img src="/uploads/c3683a76b8de0457f8edd93eb79ea948/Notion_2.PNG" alt="Notion 이미지가 없습니다."/>  
 <img src="/uploads/206be6cd806f481f7386d1b11649c7b2/Notion_3.PNG" alt="Notion 이미지가 없습니다."/>  <br>
 
-### Git Lab(Git Flow 전략) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+### Git Lab(Git Flow 전략)
 <img src="https://img.shields.io/badge/gitlab-FC6D26?style=for-the-badge&logo=GitLab&logoColor=white"><br><br>
+여러 Git Branch 전략 중 Git Flow 전략을 적용했습니다.<br>
+주요 Branch는 Front, Back, Dev, Main 이렇게 4가지를 두고 특정 기능을 구현하는 Branch를 생성해서 각각 Front나 Back에 Merge Request를 생성하고 이를 검수하여 합치는 방식으로 진행했습니다. <br>
+Dev Branch에서 통합 테스트를 하고 Main Branch는 문제 없이 최종적으로 배포하는 Branch입니다.
+<br><br>
 <img src="/uploads/89ea8ea842fd916edbbccc84a33632db/Git_Flow.gif" height="520" alt="Git Flow 이미지가 없습니다."/><br>
 
 ### Jira &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=Jira&logoColor=white"><br>
+매주 초에 회의를 통해 각자 일주일 동안 진행할 내용을 정하고 하루 Story Point 8을 기준으로 Backlog에 Issue를 생성하였습니다.<br>
+크게 Epic(기획, 개발, 학습 등)으로 분류했고 명명 규칙(FE : 개발 > ErrorPage > CSS 등)을 정하여 어떤 작업을 하는지 쉽게 이해할 수 있도록 했습니다.
+<br><br>
 <img src="/uploads/4176d072caf9b1ff28296d9f24a2382f/Jira_Backlog.PNG" alt="Jira 이미지가 없습니다."/><br>
+처음 적용 하다보니 작업에 대한 시간을 정확하게 할당하지 못하여 미숙한 부분이 많았지만 Burndown Chart는 우하향 그래프를 그리고 있습니다.<br><br>
 <img src="/uploads/6c22e9c94b32e95fda3c12d3b495ed99/Jira_Burndown_chart.PNG" alt="Jira 이미지가 없습니다."/><br><br>
 
 ## [5&nbsp;배포](#목차)  

@@ -51,7 +51,7 @@
   <CategoryModal
     v-if="selectingCategory"
     @close="selectingCategory = false"
-    @liarGameStart="gameStart(data)"
+    @liarGameStart="gameStart"
   />
   <LiarWaitingModal
     v-if="isLiarWaiting"
@@ -267,7 +267,6 @@ function pickLiar(array) {
   return array[randomPosition]
 }
 const gameStart = async function (data) {
-  console.log(data)
   await api.room.editRoom(state.mySessionId, { game: 2 })
   gameSet.gameUserOrder = [] // 초기화
   gameSet.gameUserList.value = []

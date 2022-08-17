@@ -81,15 +81,8 @@ export default {
       const getLiarSuggestion = await api.game.getliarsuggestion(
         pickCategory.value
       )
-      console.log(
-        "일단 요청이 잘 들어왔는가",
-        getLiarSuggestion.data.suggestion
-      )
       context.emit("close")
-      context.emit(
-        "liarGameStart",
-        getLiarSuggestion.suggestion.data.suggestion
-      )
+      context.emit("liarGameStart", getLiarSuggestion.data.suggestion)
     }
     return { categoryList, selectCategory, submitCategory }
   },

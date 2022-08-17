@@ -15,9 +15,10 @@
     * 타겟  
         * 사정상(전염병 유행, 거리 문제 등) 만나지 못하는 친구들  
         * 프로젝트로 새롭게 만난 팀원들  <br><br>
-* ### 기획 배경  
-
+* ### 기획 배경<br>
+===============================발표 자료 참고<br>
 * ### 기능 정의서<br>
+최대한 디테일하게 기능에 대한 조건을 작성하였습니다.<br>
 <img src="/uploads/dc9d70af1a196b5eb992023431dc3714/기능정의서.PNG" height="600" alt="기능 정의서 이미지가 없습니다."/><br>
 
 * ### Wire Frame<br>
@@ -30,9 +31,12 @@
 * ### Vue.js &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white">  <br>
 
-* ### Spring Boot(https 적용, Restful API) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+* ### Spring Boot<br>
 <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">  <br>
+Spring Boot를 사용했으며 DB는 MySQL, 연동엔 JPA를 사용했습니다.<br>
+또한 서버 배포를 위해 Certbot을 이용한 SSL인증서를 적용하여 https 프로토콜을 사용하도록 구현했습니다.<br>
 <img src="/uploads/61e0df00be91dd436689679a5c98956c/Https.PNG" height="150" alt="Https 이미지가 없습니다."/>  <br>
+팀원 간 협의하여 Restful한 API를 설계하도록 고민하였고 Notion에 기록했습니다.<br>
 <img src="/uploads/e83e84f8a7f5c065a88fafedf0436a9e/Rest_API.PNG" height="450" alt="Rest API 이미지가 없습니다."/>  <br>
 
 * ### 추가할 것들  
@@ -86,6 +90,6 @@ Dev Branch에서 통합 테스트를 하고 Main Branch는 문제 없이 최종�
 <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white"><br>
 
 ### MSA 적용<br><br>
-애플리케이션을 개발하는데 하나의 큰 애플리케이션으로 개발하는 Monolythic Architecture와 서비스별 서버를 나누는 Micro Service Architecture(MSA)가 있습니다.
+애플리케이션을 개발하는데 하나의 큰 애플리케이션으로 개발하는 Monolythic Architecture와 서비스별 서버를 나누는 Micro Service Architecture(MSA)가 있습니다.<br>
 저흰 서비스별 서버를 나눠 분산처리를 하여 유지보수가 용이한 MSA를 적용하였습니다.<br><br>
 <img src="/uploads/e6525277761b845bb1a843dfdc76650a/MSA.PNG" alt="MSA 이미지가 없습니다."/>  

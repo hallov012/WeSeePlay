@@ -11,7 +11,7 @@
         * 서비스 명 : We See Play &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/uploads/5fb825b93032521b01baa380e896c042/Logo.PNG" height="50" alt="Logo 이미지가 없습니다."/>
         * 슬로건 : We See! We Play!&nbsp;&nbsp;&nbsp;&nbsp;
 <img src="/uploads/e0b473308a3602dbbc2b445f7c714959/Slogan.PNG" height="40" alt="Slogan 이미지가 없습니다."/>  <br>
-        * 더욱 커지는 비대면의 중요성을 겨냥한 서비스  
+        * 더욱 커지는 비대면의 중요성을 겨냥한 서비스 입니다. <br>
     * 타겟  
         * 사정상(전염병 유행, 거리 문제 등) 만나지 못하는 친구들  
         * 프로젝트로 새롭게 만난 팀원들  <br><br>
@@ -86,4 +86,6 @@ Dev Branch에서 통합 테스트를 하고 Main Branch는 문제 없이 최종�
 <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white"><br>
 
 ### MSA 적용<br><br>
+애플리케이션을 개발하는데 하나의 큰 애플리케이션으로 개발하는 Monolythic Architecture와 서비스별 서버를 나누는 Micro Service Architecture(MSA)가 있습니다.
+저흰 서비스별 서버를 나눠 분산처리를 하여 유지보수가 용이한 MSA를 적용하였습니다.<br><br>
 <img src="/uploads/e6525277761b845bb1a843dfdc76650a/MSA.PNG" alt="MSA 이미지가 없습니다."/>  

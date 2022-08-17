@@ -16,7 +16,7 @@
         * 사정상(전염병 유행, 거리 문제 등) 만나지 못하는 친구들  
         * 프로젝트로 새롭게 만난 팀원들  <br><br>
 * ### 기획 배경<br>
-===============================발표 자료 참고<br>
+===============================발표 자료 참고<br><br>
 * ### 기능 정의서<br>
 최대한 디테일하게 기능에 대한 조건을 작성하였습니다.<br>
 <img src="/uploads/dc9d70af1a196b5eb992023431dc3714/기능정의서.PNG" height="600" alt="기능 정의서 이미지가 없습니다."/><br>
@@ -32,11 +32,11 @@
 <img src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white">  <br>
 
 * ### Spring Boot<br>
-<img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">  <br>
+<img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">  <br><br>
 Spring Boot를 사용했으며 DB는 MySQL, 연동엔 JPA를 사용했습니다.<br>
-또한 서버 배포를 위해 Certbot을 이용한 SSL인증서를 적용하여 https 프로토콜을 사용하도록 구현했습니다.<br>
-<img src="/uploads/61e0df00be91dd436689679a5c98956c/Https.PNG" height="150" alt="Https 이미지가 없습니다."/>  <br>
-팀원 간 협의하여 Restful한 API를 설계하도록 고민하였고 Notion에 기록했습니다.<br>
+또한 서버 배포를 위해 Certbot을 이용한 SSL인증서를 적용하여 https 프로토콜을 사용하도록 구현했습니다.<br><br>
+<img src="/uploads/61e0df00be91dd436689679a5c98956c/Https.PNG" height="150" alt="Https 이미지가 없습니다."/>  <br><br>
+팀원 간 협의하여 Restful한 API를 설계하도록 고민하였고 Notion에 기록했습니다.<br><br>
 <img src="/uploads/e83e84f8a7f5c065a88fafedf0436a9e/Rest_API.PNG" height="450" alt="Rest API 이미지가 없습니다."/>  <br>
 
 * ### 추가할 것들  
@@ -59,7 +59,7 @@ Spring Boot를 사용했으며 DB는 MySQL, 연동엔 JPA를 사용했습니다.
 ## [4&nbsp;프로젝트 진행](#목차)  
 데일리 스크럼을 진행하며 매번 회의를 Notion에 기록하고 Git Lab에 Git Flow 전략을 적용하여 코드를 관리하였으며 Jira를 이용하여 팀원들의 할 일과 일정을 조절하였습니다.  <br>
 ### Notion
-<img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white"><br>
+<img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white"><br><br>
 팀장님의 주도하에 Daily Scrum을 진행하였고 회의 내용을 비롯하여 API 설계, WireFrame, ERD 등 필요한 자료들을 한눈에 확인할 수 있도록 정리하였습니다.<br>
 깔끔하게 정리함으로써 지난 회의 내용이나 필요한 자료를 찾는 수고를 덜 수 있었고 원만한 협업의 원동력이 되었습니다.
 <br><br>
@@ -76,7 +76,7 @@ Dev Branch에서 통합 테스트를 하고 Main Branch는 문제 없이 최종�
 <img src="/uploads/89ea8ea842fd916edbbccc84a33632db/Git_Flow.gif" height="520" alt="Git Flow 이미지가 없습니다."/><br>
 
 ### Jira &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=Jira&logoColor=white"><br>
+<img src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=Jira&logoColor=white"><br><br>
 매주 초에 회의를 통해 각자 일주일 동안 진행할 내용을 정하고 하루 Story Point 8을 기준으로 Backlog에 Issue를 생성하였습니다.<br>
 크게 Epic(기획, 개발, 학습 등)으로 분류했고 명명 규칙(FE : 개발 > ErrorPage > CSS 등)을 정하여 어떤 작업을 하는지 쉽게 이해할 수 있도록 했습니다.
 <br><br>

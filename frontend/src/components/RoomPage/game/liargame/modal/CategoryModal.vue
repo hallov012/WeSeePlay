@@ -65,7 +65,7 @@ export default {
           pickCategory.value
         )
         const gameData = {
-          category: categoryList[pickCategory.value],
+          category: categoryList[pickCategory.value - 1],
           suggestion: getLiarSuggestion.data.suggestion,
         }
         context.emit("close")

@@ -55,13 +55,14 @@
   />
   <LiarWaitingModal
     v-if="isLiarWaiting"
-    :liar="gameSet.liar"
+    :liar="liargameLiar"
     @close="isLiarWaiting = false"
   />
 
   <LiarResultModal
     v-if="tmpGameResultModal"
     :whoWin="tmpGameResult"
+    :liar="liargameLiar"
     :gameSet="gameSet"
     :suggestion="resultSuggestion"
     :liarInput="liarIncorrectInput"
@@ -109,7 +110,9 @@ const emit = defineEmits(["tbs", "tbl", "heygettopbar", "returnLiar"])
 
 const isGameMode = ref(1)
 const router = useRouter()
+
 const initSetting = function () {
+  liargameLiar.value = ""
   gameSet = reactive({
     gameIdx: 0,
     isGameNow: 0,
@@ -226,12 +229,12 @@ const callmyNameGameStart = async function () {
     .catch((error) => {
       console.error(error)
     })
-  isGameMode.value = 3
 }
 //////////////////////////////////////////////////
 
 // 게임 정보
 const isLiarWaiting = ref(false)
+const liargameLiar = ref("")
 const selectingCategory = ref(false)
 const liarIncorrectInput = ref("")
 const resultSuggestion = ref("")
@@ -547,18 +550,18 @@ const joinSession = () => {
     }
   })
   //call my name game
-  state.session.on("signal:callMyNamegameStart", (data) => {
+  state.session.on("signal:callMyNamegameStart", async (data) => {
     let info = data.data.split(",")
-    isGameMode.value = parseInt(info[0])
     callMyNameGameIdx.value = 0
     callMyNameCoolDown.value = 3
     callMyNamegameSet.maxRound = parseInt(info[1])
+    isGameMode.value = parseInt(info[0])
     store.dispatch("editRoomGame", 3)
   })
   state.session.on("signal:callMyNamegameSuggestion", (data) => {
     callMyNamegameSet.suggestion = data.data.split(",")
   })
-  state.session.on("signal:callMyNamegameOrder", (data) => {
+  state.session.on("signal:callMyNamegameOrder", async (data) => {
     callMyNamegameSet.userList = data.data.split(",")
     callMyNamegameSet.targetPlayer = callMyNamegameSet.userList.slice(0, 3)
     callMyNamegameSet.nontargetPlayer = callMyNamegameSet.userList.slice(3)
@@ -621,6 +624,7 @@ const joinSession = () => {
     let info = data.data.split(",")
     gameSet.suggestion = info[1]
     topBarSuggestion.value = gameSet.suggestion
+    resultSuggestion.value = gameSet.suggestion
     emit("tbs", topBarSuggestion.value)
     gameSet.maxRound = parseInt(info[2])
     isGameMode.value = parseInt(info[0])
@@ -628,6 +632,7 @@ const joinSession = () => {
     store.dispatch("editRoomGame", 2)
   })
   state.session.on("signal:whoIsLiar", (data) => {
+    liargameLiar.value = data.data
     gameSet.liar = data.data
     if (gameSet.liar == state.myUserName) {
       isLiar.value = true

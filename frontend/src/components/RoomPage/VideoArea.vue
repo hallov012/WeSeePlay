@@ -58,6 +58,8 @@
     :winner="callMyNameGameResultWinner"
     :isWin="callMyNameGameResult"
     :suggestion="callMyNameMyName"
+    :winnerVideo="callMyNameGameWinnerVideo"
+    :myEmail="state.myUserName"
   />
 </template>
 
@@ -122,6 +124,7 @@ const callMyNameGameIdx = ref(0)
 const callMyNameCoolDown = ref(3)
 const callMyNameMyName = ref("")
 const callMyNameGameResultWinner = ref("")
+const callMyNameGameWinnerVideo = ref()
 const callMyNameGameResult = ref(false)
 let callMyNamegameSet = reactive({
   isGameNow: 0,
@@ -348,7 +351,6 @@ const props = defineProps({
 // 강제 종료
 watchEffect(async () => {
   if (props.isQuit === 2) {
-    console.log("꺼져줘")
     state.session
       .signal({
         data: 1,
@@ -367,14 +369,30 @@ watchEffect(async () => {
 //라이어 게임 시작
 watchEffect(() => {
   if (props.isLiarGameStart === 2) {
-    selectingCategory.value = true
+    if (state.subscribers.length > 1) {
+      selectingCategory.value = true
+    } else {
+      Swal.fire({
+        title: "Liar Game 인원수 부족!",
+        text: `3인 이상 플레이 가능`,
+        icon: "info",
+      })
+    }
     emit("returnLiar")
   }
 })
 // 콜 마이 네임 시작 isCallMyStart
 watchEffect(() => {
   if (props.isCallMyStart === 2) {
-    callmyNameGameStart()
+    if (state.subscribers.length > 1) {
+      callmyNameGameStart()
+    } else {
+      Swal.fire({
+        title: "Call My Name 인원수 부족!",
+        text: `3인 이상 플레이 가능`,
+        icon: "info",
+      })
+    }
     emit("returnCallmyname")
   }
 })
@@ -571,8 +589,10 @@ const joinSession = () => {
     let data = parseInt(info.data)
     if (!data) {
       callMyNameGameResultWinner.value = callMyNamegameSet.userList[0]
+      callMyNameGameWinnerVideo.value = callMyNamegameSet.gameUserOrder[0]
     } else {
       callMyNameGameResultWinner.value = callMyNamegameSet.userList[data]
+      callMyNameGameWinnerVideo.value = callMyNamegameSet.gameUserOrder[data]
     }
     for (let i = 0; i < 3; i++) {
       if (callMyNamegameSet.userList[i] === state.myUserName) {
@@ -582,7 +602,6 @@ const joinSession = () => {
 
     if (state.myUserName === callMyNameGameResultWinner.value) {
       callMyNameGameResult.value = true
-      await api.room.editRoom(state.mySessionId, { game: 1 })
     }
     if (state.myUserName === hostEmail.value) {
       await api.room.editRoom(state.mySessionId, { game: 1 })

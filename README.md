@@ -7,9 +7,7 @@
 
 ### <a href="#3">[3. 적용 게임 소개](#3적용게임소개)</a>
 
-### <a href="#4">[4. 프로젝트 진행](#4프로젝트진행)</a>
-
-### <a href="#5">[5. 배포](#5배포)</a><br><br><br>
+### <a href="#4">[4. 프로젝트 진행](#4프로젝트진행)</a><br><br><br>
 
 <div id="1"></div>
 
@@ -202,22 +200,3 @@ Dev Branch에서 통합 테스트를 하고 Main Branch는 문제 없이 최종�
 처음 적용 하다보니 작업에 대한 시간을 정확하게 할당하지 못하여 미숙한 부분이 많았지만 Burndown Chart는 우하향 그래프를 그리고 있습니다.<br><br>
 
 <img  src="/uploads/6c22e9c94b32e95fda3c12d3b495ed99/Jira_Burndown_chart.PNG"  alt="Jira 이미지가 없습니다."/><br><br>
-
-<div id="5"></div>
-
-## [5&nbsp;배포](#목차)
-
-  
-
-### Docker
-
-
-
-
-### MSA 적용<br><br>
-
-애플리케이션을 개발하는데 하나의 큰 애플리케이션으로 개발하는 Monolythic Architecture와 서비스별 서버를 나누는 Micro Service Architecture(MSA)가 있습니다.<br>
-
-저흰 서비스별 서버를 나눠 분산처리를 하여 유지보수가 용이한 MSA를 적용하였습니다.<br><br>
-
-<img  src="/uploads/e6525277761b845bb1a843dfdc76650a/MSA.PNG"  alt="MSA 이미지가 없습니다."/>

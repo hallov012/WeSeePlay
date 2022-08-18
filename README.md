@@ -21,9 +21,7 @@
 
 * 서비스 명 : We See Play &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img  src="/uploads/5fb825b93032521b01baa380e896c042/Logo.PNG"  height="50"  alt="Logo 이미지가 없습니다."/>
 
-* 슬로건 : We See! We Play!&nbsp;&nbsp;&nbsp;&nbsp;
-
-<img  src="/uploads/e0b473308a3602dbbc2b445f7c714959/Slogan.PNG"  height="40"  alt="Slogan 이미지가 없습니다."/>  <br>
+* 슬로건 : We See! We Play!&nbsp;&nbsp;&nbsp;&nbsp;<img  src="/uploads/e0b473308a3602dbbc2b445f7c714959/Slogan.PNG"  height="40"  alt="Slogan 이미지가 없습니다."/>  <br>
 
 * 더욱 커지는 비대면의 중요성을 겨냥한 서비스 입니다. <br>
 
@@ -51,20 +49,20 @@
 
 * ### 서비스 화면
 
-시작 페이지<br>
+시작 페이지<br><br>
 <img  src="/uploads/e5f51c30c9c0944f6ae63cba154f5fec/start_page1.PNG"  height="400"  alt="start_page1 이미지가 없습니다."/>
 <img  src="/uploads/729cefa08d2ef3faef4d426e24fb782c/start_page2.PNG"  height="400"  alt="start_page2 이미지가 없습니다."/><br><br>
 
-회원가입 페이지
+회원가입 페이지<br><br>
 <img  src="/uploads/2b77ac049101eb994625042575f782a2/register.PNG"  height="400"  alt="register 이미지가 없습니다."/><br><br>
 
-카카오 로그인<br>
+카카오 로그인<br><br>
 <img  src="/uploads/4761dc60eb19a9c87597d1abc13caa03/kakao_login.gif"  height="400"  alt="kakao_login gif가 없습니다."/><br><br>
 
-Nickname 변경<br>
+Nickname 변경<br><br>
 <img  src="/uploads/e17e7ebb05e768e64a8025f64e4d31cb/modify_nickname.gif"  height="400"  alt="modify_nickname gif가 없습니다."/><br><br>
 
-User 탈퇴<br>
+User 탈퇴<br><br>
 <img  src="/uploads/ed04e5924ebc49eb5e223904bb6eb23c/delete_user.gif"  height="400"  alt="delete_user gif가 없습니다."/><br><br>
 
 

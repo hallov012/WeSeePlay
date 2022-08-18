@@ -79,6 +79,15 @@ Nickname 변경<br><br>
 User 탈퇴<br><br>
 <img  src="/uploads/ed04e5924ebc49eb5e223904bb6eb23c/delete_user.gif"  height="400"  alt="delete_user gif가 없습니다."/><br><br>
 
+Room 입장<br><br>
+<img  src="/uploads/cba0da4a4e01ea2a7844383038945087/enter_room.gif"  height="400"  alt="enter room gif가 없습니다."/><br><br>
+
+Liar Game<br><br>
+<img  src="/uploads/1df5c017884572a0a52404d3af09bf6f/liar_game.gif"  height="400"  alt="liar game gif가 없습니다."/><br><br>
+
+Call My Name Game<br><br>
+<img  src="/uploads/883355ecbc48c91efabbeeab3d522f6e/call_my_name_game.gif"  height="400"  alt="call my name game gif가 없습니다."/><br><br>
+
 <div id="2"></div>
 
 ## [2&nbsp;기술&nbsp;스택](#목차)

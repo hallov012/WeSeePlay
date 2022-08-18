@@ -1,17 +1,17 @@
 
 # 목차
 
-### [1. 서비스 소개](#1서비스소개)
+### <a href="#1">[1. 서비스 소개](#1서비스소개)</a>
 
-### [2. 기술 스택](#2기술스택)
+### <a href="#2">[2. 기술 스택](#2기술스택)</a>
 
-### [3. 적용 게임 소개](#3적용게임소개)
+### <a href="#3">[3. 적용 게임 소개](#3적용게임소개)</a>
 
-### [4. 프로젝트 진행](#4프로젝트진행)
+### <a href="#4">[4. 프로젝트 진행](#4프로젝트진행)</a>
 
-### [5. 배포](#5배포)<br><br><br>
+### <a href="#5">[5. 배포](#5배포)</a><br><br><br>
 
-  
+<div id="1"></div>
 
 ## [1&nbsp;서비스&nbsp;소개](#목차)
 
@@ -65,6 +65,7 @@ Nickname 변경<br><br>
 User 탈퇴<br><br>
 <img  src="/uploads/ed04e5924ebc49eb5e223904bb6eb23c/delete_user.gif"  height="400"  alt="delete_user gif가 없습니다."/><br><br>
 
+<div id="2"></div>
 
 ## [2&nbsp;기술&nbsp;스택](#목차)
 
@@ -100,7 +101,7 @@ Spring Boot를 사용했으며 DB는 MySQL, 연동엔 JPA를 사용했습니다.
 
 * ### 추가할 것들
 
-  
+  <div id="3"></div>
 
 ## [3&nbsp;적용&nbsp;게임&nbsp;소개](#목차)
 
@@ -126,7 +127,7 @@ Spring Boot를 사용했으며 DB는 MySQL, 연동엔 JPA를 사용했습니다.
 
 서로 질문을 하며 자신의 이름을 맞추는 방식입니다.
 
-  
+  <div id="4"></div>
 
 ## [4&nbsp;프로젝트&nbsp;진행](#목차)
 
@@ -178,7 +179,7 @@ Dev Branch에서 통합 테스트를 하고 Main Branch는 문제 없이 최종�
 
 <img  src="/uploads/6c22e9c94b32e95fda3c12d3b495ed99/Jira_Burndown_chart.PNG"  alt="Jira 이미지가 없습니다."/><br><br>
 
-  
+<div id="5"></div>
 
 ## [5&nbsp;배포](#목차)
 

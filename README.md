@@ -1,9 +1,9 @@
 
 # 목차
 
-### [1. 서비스 소개](#1서비스-소개)
+### [1. 서비스 소개](#1서비스소개)
 
-### [2. 기술 스택](#2기술-스택)
+### [2. 기술 스택](#2기술스택)
 
 ### [3. 적용 게임 소개](#3적용게임소개)
 
@@ -13,7 +13,7 @@
 
   
 
-## [1&nbsp;서비스 소개](#목차)
+## [1&nbsp;서비스&nbsp;소개](#목차)
 
 * ### 서비스 설명
 
@@ -66,7 +66,7 @@ User 탈퇴<br><br>
 <img  src="/uploads/ed04e5924ebc49eb5e223904bb6eb23c/delete_user.gif"  height="400"  alt="delete_user gif가 없습니다."/><br><br>
 
 
-## [2&nbsp;기술 스택](#목차)
+## [2&nbsp;기술&nbsp;스택](#목차)
 
 <img  src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white"><img  src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"><img  src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white"><img  src="https://img.shields.io/badge/gitlab-FC6D26?style=for-the-badge&logo=GitLab&logoColor=white"><img  src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=Jira&logoColor=white"><img  src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white"><img  src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"><img  src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white"><img  src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"><img  src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=for-the-badge&logo=Visual Studio Code&logoColor=white"><img  src="https://img.shields.io/badge/Eclipse IDE-2C2255?style=for-the-badge&logo=Eclipse IDE&logoColor=white"><img  src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white"><img  src="https://img.shields.io/badge/Gradle-02303A?style=for-the-badge&logo=Gradle&logoColor=white"><img  src="https://img.shields.io/badge/Quasar-1976D2?style=for-the-badge&logo=Quasar&logoColor=white"><img  src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white"><img  src="https://img.shields.io/badge/SonarLint-CB2029?style=for-the-badge&logo=SonarLint&logoColor=white"><img  src="https://img.shields.io/badge/Mattermost-0058CC?style=for-the-badge&logo=Mattermost&logoColor=white"><img  src="https://img.shields.io/badge/Let's Encrypt-003A70?style=for-the-badge&logo=Let's Encrypt&logoColor=white"><img  src="https://img.shields.io/badge/NGINX-009639?style=for-the-badge&logo=NGINX&logoColor=white"><img  src="https://img.shields.io/badge/Amazon AWS-232F3E?style=for-the-badge&logo=Amazon AWS&logoColor=white"><img  src="https://img.shields.io/badge/Amazon EC2-FF9900?style=for-the-badge&logo=Amazon EC2&logoColor=white"><img  src="https://img.shields.io/badge/Kakao-FFCD00?style=for-the-badge&logo=Kakao&logoColor=white"><img  src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=Windows&logoColor=white"><img  src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=Ubuntu&logoColor=white"><img  src="/uploads/85ed6aeebb1d9d7b6e2b0043a3dc8647/OpenVidu.PNG"  height="30"  alt="OpenVidu 이미지가 없습니다."/>
 

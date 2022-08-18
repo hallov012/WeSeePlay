@@ -49,6 +49,7 @@
     :gameSet="gameSet"
     :suggestion="resultSuggestion"
     :liarInput="liarIncorrectInput"
+    :liarStream="liarStream"
     @close="tmpGameResultModal = false"
   />
 
@@ -223,6 +224,7 @@ const liargameLiar = ref("")
 const selectingCategory = ref(false)
 const liarIncorrectInput = ref("")
 const resultSuggestion = ref("")
+const liarStream = ref()
 let gameSet = reactive({
   gameIdx: 0,
   isGameNow: 0,
@@ -432,35 +434,12 @@ watchEffect(() => {
   }
   hostEmail.value = store.getters.getRoomInfo.hostEmail
 })
-// const toggleAudio = () => {
-//   vidoman.publishAudio = !vidoman.publishAudio
-//   if (vidoman.publishAudio) {
-//     state.publisher.publishAudio(true)
-//   } else {
-//     state.publisher.publishAudio(false)
-//   }
-// }
+
 const endGame = async function (result) {
   await api.room.editRoom(state.mySessionId, { game: 1 })
   tmpGameResult.value = result
   tmpGameResultModal.value = true
-  // if (result) {
-  //   if (gameSet.liar === state.myUserName) {
-  //     gameSet.gameResult = "유저 승리"
-  //   } else {
-  //     gameSet.gameResult = "라이어 패배"
-  //   }
-  // } else {
-  //   console.log("여기까지 온거 아냐?")
-  //   if (gameSet.liar === state.myUserName) {
-  //     gameSet.gameResult = "라이어 승리"
-  //   } else {
-  //     gameSet.gameResult = "유저 패배"
-  //   }
-  // }
-  // setTimeout(() => {
-  //   tmpGameResult.value = gameSet.gameResultModal
-  // }, 5000)
+
   initSetting()
   isGameMode.value = 1
   store.dispatch("editRoomGame", 1)
@@ -665,6 +644,11 @@ const joinSession = () => {
       })
       if (!flag) {
         gameSet.gameUserOrder.push(state.publisher)
+      }
+    }
+    for (let q = 0; q < gameSet.gameUserList.value.length; q++) {
+      if (gameSet.gameUserList.value[q] === gameSet.liar) {
+        liarStream.value = gameSet.gameUserOrder[q]
       }
     }
   })
@@ -937,30 +921,6 @@ onMounted(async () => {
   } catch (err) {
     console.log(err)
   }
-
-  // try {
-  //   const response = await axios({
-  //     method: 'GET',
-  //     headers: { authorization: "Bearer " + localStorage.getItem("token") },
-  //     url: api.room.roomInfo(roomID),
-  //   })
-
-  //   if (response.status === 200) {
-  //     dispatch('setRoomInfo', response.data)
-  //   } else {
-  //     Swal.fire({
-  //       icon: 'error',
-  //       text: '존재하지 않는 방입니다',
-  //     })
-  //     router.push({ name: 'errorpage', params: { errorname: '404' } })
-  //   }
-  // } catch (err) {
-  //   Swal.fire({
-  //     icon: 'error',
-  //     text: '잘못된 접근입니다',
-  //   })
-  //   router.push({ name: 'errorpage', params: { errorname: '500' } })
-  // }
 
   joinSession()
   // joinGameSession()

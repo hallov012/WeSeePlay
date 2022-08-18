@@ -78,7 +78,9 @@ User 탈퇴<br><br>
   
 
 * ### Vue.js<br>
-
+JavaScript 프레임 워크 중 Angular, React에 비해 가볍고 복잡도가 낮은 Vue3를 사용하였습니다.<br>
+Vue2에서 활용하던 Option API 방식이 아닌 Composition Api로 script를 구성하여 가시성을 높였고, vuex를 통해 유저, 방 관련 state를 설정하여 유지 보수 및 관리에 효율성을 높였으며 API통신으로 Backend와 request와 response를 주고 받았습니다.<br>
+웹 페이지를 기능 단위로 Component를 구분하고, style에 필요한 CSS 파일을 분리하여 전체적인 유지 보수의 용이함과 재사용성을 높였습니다.<br><br>
   
 
 * ### Spring Boot<br>

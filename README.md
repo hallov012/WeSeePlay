@@ -19,21 +19,27 @@
 
 + 개요
 
-	* 서비스 명 : We See Play &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img  src="/uploads/5fb825b93032521b01baa380e896c042/Logo.PNG"  height="50"  alt="Logo 이미지가 없습니다."/>
+	* 서비스 명 : We See Play <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img  src="/uploads/5fb825b93032521b01baa380e896c042/Logo.PNG"  height="200"  alt="Logo 이미지가 없습니다."/>
+	* 슬로건 : We See! We Play!<br>
+	* 한줄 소개: 비대면 환경에 익숙해진 현대인을 위한 웹 화상 게임 서비스 <br>
 
-	* 슬로건 : We See! We Play!&nbsp;&nbsp;&nbsp;&nbsp;<img  src="/uploads/e0b473308a3602dbbc2b445f7c714959/Slogan.PNG"  height="40"  alt="Slogan 이미지가 없습니다."/>  <br>
+* 서비스 설명
 
-	* 더욱 커지는 비대면의 중요성을 겨냥한 서비스 입니다. <br>
+	* 비대면 환경에서 화상 채팅과 게임을 한번에 진행할 수 있는 웹 화상 게임 서비스 라이어 게임<br>
+*  Call My Name 과 같은 심리 추리 게임을 문자, 음성 뿐만이 아닌 화상 정보들을 통해 같은 공간에서 플레이하는 것 같은 실감나는 경험을 제공 <br>
+	* 평소 인터넷 게임에 익숙하지 않은 사람들도 쉽게 참여할 수 있는 서비스<br>
 
 * 타겟
 
-	* 사정상(전염병 유행, 거리 문제 등) 만나지 못하는 친구들
-
-	* 프로젝트로 새롭게 만난 팀원들 <br><br>
+	* 팀 프로젝트, 단체 활동을 시작한 사람들<br>
+* 지역, COVID-19 등 여러 이유로 비대면 활동을 진행하는 사람들<br>
+	* 사람들과 얼굴을 보며 대화를 토대로 간단한 게임을 진행하고 싶은 사람들<br>
 
 * ### 기획 배경<br>
 
-===============================발표 자료 참고<br><br>
+장기화된 COVID-19의 영향으로 사람들은 점점 비대면 활동에 익숙해졌습니다. 단순히 지인들과의 관계뿐만 아니라 팀 프로젝트*,* 조별 활동 등 과업적인 부분들 또한 비대면으로 진행하는 것에 익숙해졌으며, 이러한 비대면 활동의 시간, 공간적 자유로움을 이용하기 위해 대면활동이 가능해진 상황에서도 비대면에 의존하는 경향이 이전보다 짙어졌습니다. 하지만 비대면 활동은 시간, 공간적 자유로움을 제공하나 사람들과의 유대감 향상 등 상호적인 관계를 형성하는 것에 어려움이 있으며 할 수 있는 활동의 범주에 제한이 있습니다.
+
+​	저희 WeSeePlay는 참여자 간의 의사소통을 베이스로 한 게임을 제공하여 비대면 환경에서 참여자 간의 관계 형성을 돕고, 비대면 환경의 활동 범주를 확장하여 대면 환경에서 느낄 수 있는 긍정적인 경험을 제공합니다.<br><br>
 
 * ### 기능 정의서<br>
 
@@ -75,14 +81,13 @@ User 탈퇴<br><br>
 다양한 프레임워크에서 사용 가능하며 그에 따른 튜토리얼을 <a href="https://openvidu.io/tutorials">DOC</a>에서 찾아 볼 수 있습니다. OpenVidu 공식 문서를 통해 간단하게 사용할 수 있으며, 해당 프로젝트에서는 `component/RoomPage/VideoArea`에서 확인 할 수있습니다. 
 
 `WeSeePlay`에서는  화상 통화를 구현하기 위하여 OpenVidu를 사용하였습니다. 또 `WeSeePlay`에서 제공하는 Liar Game, Call My Name 게임들은, OpenVidu의 Server-Side를 활용하여 구현하였습니다.
-  
+
 
 * ### Vue.js<br>
-JavaScript 프레임 워크 중 Angular, React에 비해 가볍고 복잡도가 낮은 Vue3를 사용하였습니다.<br>
-Vue2에서 활용하던 Option API 방식이 아닌 Composition Api로 script를 구성하여 가시성을 높였고, vuex를 통해 유저, 방 관련 state를 설정하여 유지 보수 및 관리에 효율성을 높였으며 API통신으로 Backend와 request와 response를 주고 받았습니다.<br>
-웹 페이지를 기능 단위로 Component를 구분하고, style에 필요한 CSS 파일을 분리하여 전체적인 유지 보수의 용이함과 재사용성을 높였습니다.<br><br>
+  JavaScript 프레임 워크 중 Angular, React에 비해 가볍고 복잡도가 낮은 Vue3를 사용하였습니다.<br>
+  Vue2에서 활용하던 Option API 방식이 아닌 Composition Api로 script를 구성하여 가시성을 높였고, vuex를 통해 유저, 방 관련 state를 설정하여 유지 보수 및 관리에 효율성을 높였으며 API통신으로 Backend와 request와 response를 주고 받았습니다.<br>
+  웹 페이지를 기능 단위로 Component를 구분하고, style에 필요한 CSS 파일을 분리하여 전체적인 유지 보수의 용이함과 재사용성을 높였습니다.<br><br>
   
-
 * ### Spring Boot<br>
 
 Spring Boot를 사용했으며 DB는 MySQL, 연동엔 JPA를 사용했습니다.<br>
@@ -190,7 +195,7 @@ Dev Branch에서 통합 테스트를 하고 Main Branch는 문제 없이 최종�
 ### Docker
 
 
-  
+
 
 ### MSA 적용<br><br>
 

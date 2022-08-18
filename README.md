@@ -19,17 +19,17 @@
 
 + 개요
 
-* 서비스 명 : We See Play &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img  src="/uploads/5fb825b93032521b01baa380e896c042/Logo.PNG"  height="50"  alt="Logo 이미지가 없습니다."/>
+	* 서비스 명 : We See Play &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img  src="/uploads/5fb825b93032521b01baa380e896c042/Logo.PNG"  height="50"  alt="Logo 이미지가 없습니다."/>
 
-* 슬로건 : We See! We Play!&nbsp;&nbsp;&nbsp;&nbsp;<img  src="/uploads/e0b473308a3602dbbc2b445f7c714959/Slogan.PNG"  height="40"  alt="Slogan 이미지가 없습니다."/>  <br>
+	* 슬로건 : We See! We Play!&nbsp;&nbsp;&nbsp;&nbsp;<img  src="/uploads/e0b473308a3602dbbc2b445f7c714959/Slogan.PNG"  height="40"  alt="Slogan 이미지가 없습니다."/>  <br>
 
-* 더욱 커지는 비대면의 중요성을 겨냥한 서비스 입니다. <br>
+	* 더욱 커지는 비대면의 중요성을 겨냥한 서비스 입니다. <br>
 
 * 타겟
 
-* 사정상(전염병 유행, 거리 문제 등) 만나지 못하는 친구들
+	* 사정상(전염병 유행, 거리 문제 등) 만나지 못하는 친구들
 
-* 프로젝트로 새롭게 만난 팀원들 <br><br>
+	* 프로젝트로 새롭게 만난 팀원들 <br><br>
 
 * ### 기획 배경<br>
 
